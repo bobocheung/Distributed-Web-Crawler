@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Personalized News Aggregator</title>
+    <style>
+        :root {
+            --bg: #0b0c10; --card: #121318; --text: #e5e7eb; --muted: #9aa0a6;
+            --brand: #3b82f6; --brand-2: #22c55e; --border: #1f2937;
+        }
+        * { box-sizing: border-box; }
+        body { background: linear-gradient(180deg, #0b0c10 0%, #0f1116 100%); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+        .container { max-width: 1100px; padding: 24px; margin: 0 auto; }
+        header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+        h1 { font-size: 20px; margin: 0 12px 0 0; color: #fff; }
+        input, button, select { padding: 10px 12px; font-size: 14px; border-radius: 10px; border: 1px solid var(--border); background: #0f131a; color: var(--text); }
+        button { background: var(--brand); border: 0; color: white; cursor: pointer; transition: transform .05s ease-in-out, opacity .2s; }
+        button.secondary { background: #1f2937; }
+        button:hover { opacity: .92; }
+        button:active { transform: translateY(1px); }
+        .toolbar { background: #0f131a; border: 1px solid var(--border); border-radius: 14px; padding: 12px; display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+        .toolbar input[type="search"] { min-width: 240px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+        .article { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+        .article h3 { margin: 0 0 6px; font-size: 16px; }
+        .meta { color: var(--muted); font-size: 12px; margin-top: 2px; display:flex; gap:6px; align-items:center; }
+        .badge { border: 1px solid var(--border); background: #0c1016; padding: 2px 8px; border-radius: 999px; font-size: 11px; color: var(--muted); }
+        .actions { margin-top: 8px; display: flex; gap: 8px; }
+        a { color: #93c5fd; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="container">
+<header>
+    <h1>Personalized News</h1>
+    <input id="email" placeholder="you@example.com"/>
+    <button id="createUser">Create / Use</button>
+    <span id="userInfo" class="badge"></span>
+    <button id="refresh" class="secondary">Refresh</button>
+</header>
+
+<section class="toolbar">
+    <label>Category
+        <select id="category">
+            <option value="">All</option>
+        </select>
+    </label>
+    <label>Source
+        <select id="source">
+            <option value="">All</option>
+        </select>
+    </label>
+    <input id="search" type="search" placeholder="Search titles or summaries..." />
+    <label>Order
+        <select id="order">
+            <option value="newest" selected>Newest</option>
+            <option value="oldest">Oldest</option>
+        </select>
+    </label>
+    <button id="applyFilters">Apply</button>
+</section>
+<div id="articles" class="grid"></div>
+</div>
+<script>
+const API_BASE = '';
+let currentUserId = null;
+
+async function createOrUseUser() {
+	const email = document.getElementById('email').value.trim();
+	if (!email) return;
+	const res = await fetch(`${API_BASE}/users`, {
+		method: 'POST', headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ email })
+	});
+	const data = await res.json();
+	currentUserId = data.id;
+	document.getElementById('userInfo').textContent = `User ID: ${currentUserId}`;
+	await refreshArticles();
+}
+
+async function loadMeta() {
+    const res = await fetch(`${API_BASE}/meta`);
+    const meta = await res.json();
+    const cat = document.getElementById('category');
+    const src = document.getElementById('source');
+    for (const c of meta.categories) {
+        const o = document.createElement('option'); o.value = c; o.textContent = c; cat.appendChild(o);
+    }
+    for (const s of meta.sources) {
+        const o = document.createElement('option'); o.value = s; o.textContent = s; src.appendChild(o);
+    }
+}
+
+let currentPage = 1;
+
+async function refreshArticles() {
+    const qs = new URLSearchParams();
+    if (currentUserId) qs.set('user_id', String(currentUserId));
+    const category = document.getElementById('category').value;
+    const source = document.getElementById('source').value;
+    const order = document.getElementById('order').value;
+    const q = document.getElementById('search').value.trim();
+    if (category) qs.set('category', category);
+    if (source) qs.set('source', source);
+    if (order) qs.set('order', order);
+    if (q) qs.set('q', q);
+    qs.set('page', String(currentPage));
+    qs.set('page_size', '30');
+    const res = await fetch(`${API_BASE}/articles?${qs.toString()}`);
+	const articles = await res.json();
+	const container = document.getElementById('articles');
+	container.innerHTML = '';
+	for (const a of articles) {
+        const div = document.createElement('div');
+        div.className = 'article';
+        div.innerHTML = `
+            <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
+            <div class="meta">
+                <span class="badge">${a.source || ''}</span>
+                <span class="badge">${a.category || 'general'}</span>
+                <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
+            </div>
+            <p>${a.summary || ''}</p>
+            <div class="actions">
+                <button data-like="1" data-id="${a.id}">Like</button>
+                <button data-like="0" data-id="${a.id}" class="secondary">Dislike</button>
+            </div>
+        `;
+		container.appendChild(div);
+	}
+	for (const btn of document.querySelectorAll('.actions button')) {
+		btn.addEventListener('click', async (e) => {
+			if (!currentUserId) return;
+			const liked = e.target.getAttribute('data-like') === '1';
+			const articleId = parseInt(e.target.getAttribute('data-id'));
+			await fetch(`${API_BASE}/feedback`, {
+				method: 'POST', headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ user_id: currentUserId, article_id: articleId, liked })
+			});
+			await refreshArticles();
+		});
+	}
+
+    // Simple "Load more" button
+    const more = document.createElement('div');
+    more.style.textAlign = 'center';
+    more.style.margin = '12px 0 30px';
+    const moreBtn = document.createElement('button');
+    moreBtn.textContent = 'Load more';
+    moreBtn.className = 'secondary';
+    moreBtn.addEventListener('click', async () => {
+        currentPage += 1;
+        const qs2 = new URLSearchParams(qs.toString());
+        qs2.set('page', String(currentPage));
+        const res2 = await fetch(`${API_BASE}/articles?${qs2.toString()}`);
+        const moreArticles = await res2.json();
+        for (const a of moreArticles) {
+            const div2 = document.createElement('div');
+            div2.className = 'article';
+            div2.innerHTML = `
+                <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
+                <div class="meta">
+                    <span class="badge">${a.source || ''}</span>
+                    <span class="badge">${a.category || 'general'}</span>
+                    <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
+                </div>
+                <p>${a.summary || ''}</p>
+                <div class="actions">
+                    <button data-like="1" data-id="${a.id}">Like</button>
+                    <button data-like="0" data-id="${a.id}" class="secondary">Dislike</button>
+                </div>
+            `;
+            container.appendChild(div2);
+        }
+    });
+    more.appendChild(moreBtn);
+    container.appendChild(more);
+}
+
+document.getElementById('createUser').addEventListener('click', createOrUseUser);
+
+document.getElementById('refresh').addEventListener('click', refreshArticles);
+document.getElementById('applyFilters').addEventListener('click', () => { currentPage = 1; refreshArticles(); });
+
+loadMeta().then(refreshArticles);
+</script>
+</body>
+</html>
