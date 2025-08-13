@@ -1,0 +1,2334 @@
+[
+  {
+    "url": "https://news.now.com/rss/local",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://news.now.com/rss/local",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://news.now.com/rss/local",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://news.now.com/rss/local",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.hk01.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hk01.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hk01.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hk01.com/rss",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://feeds.reuters.com/reuters/worldNews",
+    "reason": "exception"
+  },
+  {
+    "url": "https://feeds.reuters.com/reuters/worldNews",
+    "reason": "exception"
+  },
+  {
+    "url": "https://feeds.reuters.com/reuters/worldNews",
+    "reason": "exception"
+  },
+  {
+    "url": "https://feeds.reuters.com/reuters/worldNews",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://apnews.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://apnews.com/rss",
+    "reason": "http_error:429"
+  },
+  {
+    "url": "https://apnews.com/rss.xml",
+    "reason": "http_error:429"
+  },
+  {
+    "url": "https://apnews.com/index.xml",
+    "reason": "http_error:429"
+  },
+  {
+    "url": "https://apnews.com/atom.xml",
+    "reason": "http_error:429"
+  },
+  {
+    "url": "https://apnews.com/hub/apf-topnews?utm_source=apnews.com&utm_medium=referral&utm_campaign=rss&output=rss",
+    "reason": "http_error:429"
+  },
+  {
+    "url": "https://apnews.com/hub/apf-topnews?utm_source=apnews.com&utm_medium=referral&utm_campaign=rss&output=rss",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.reuters.com/world/asia-pacific/rss",
+    "reason": "http_error:401"
+  },
+  {
+    "url": "https://www.reuters.com/world/asia-pacific/rss",
+    "reason": "http_error:401"
+  },
+  {
+    "url": "https://www.reuters.com/world/asia-pacific/rss",
+    "reason": "http_error:401"
+  },
+  {
+    "url": "https://www.reuters.com/world/asia-pacific/rss",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-canada-public-rss-1.822295",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-canada-public-rss-1.822295",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-canada-public-rss-1.822295",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-canada-public-rss-1.822295",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-world-public-rss-1.822289",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-world-public-rss-1.822289",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-world-public-rss-1.822289",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-world-public-rss-1.822289",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.rnz.co.nz/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.rnz.co.nz/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.rnz.co.nz/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.rnz.co.nz/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www3.nhk.or.jp/nhkworld/en/news/rss/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www3.nhk.or.jp/nhkworld/en/news/rss/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www3.nhk.or.jp/nhkworld/en/news/rss/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www3.nhk.or.jp/nhkworld/en/news/rss/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.koreaherald.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.koreaherald.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.koreaherald.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.koreaherald.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.todayonline.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.todayonline.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.todayonline.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.todayonline.com/feed",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.taipeitimes.com/rss/front",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.taipeitimes.com/rss/front",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.taipeitimes.com/rss/front",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.taipeitimes.com/rss/front",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.washingtonpost.com/rss/world/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.washingtonpost.com/rss/world/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.washingtonpost.com/rss/world/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.washingtonpost.com/rss/world/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.lefigaro.fr/rss/figaro_technologies.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lefigaro.fr/rss/figaro_technologies.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lefigaro.fr/rss/figaro_technologies.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lefigaro.fr/rss/figaro_technologies.xml",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://elpais.com/tecnologia/rss/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://elpais.com/tecnologia/rss/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://elpais.com/tecnologia/rss/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://elpais.com/tecnologia/rss/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.japantimes.co.jp/feed/technology.rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.japantimes.co.jp/feed/technology.rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.japantimes.co.jp/feed/technology.rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.japantimes.co.jp/feed/technology.rss",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://rss.japantimes.co.jp/rss/feed/top_news.rss",
+    "reason": "exception"
+  },
+  {
+    "url": "https://rss.japantimes.co.jp/rss/feed/top_news.rss",
+    "reason": "exception"
+  },
+  {
+    "url": "https://rss.japantimes.co.jp/rss/feed/top_news.rss",
+    "reason": "exception"
+  },
+  {
+    "url": "https://rss.japantimes.co.jp/rss/feed/top_news.rss",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://feeds.feedburner.com/ithome/it",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://feeds.feedburner.com/ithome/it",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://feeds.feedburner.com/ithome/it",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://feeds.feedburner.com/ithome/it",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.cna.com.tw/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cna.com.tw/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cna.com.tw/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cna.com.tw/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cna.com.tw/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gmanetwork.com/news/rss/news/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gmanetwork.com/news/rss/news/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gmanetwork.com/news/rss/news/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gmanetwork.com/news/rss/news/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://english.alarabiya.net/.mrss/en/english.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://english.alarabiya.net/.mrss/en/english.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://english.alarabiya.net/.mrss/en/english.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://english.alarabiya.net/.mrss/en/english.xml",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.timesofisrael.com/feed/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.timesofisrael.com/feed/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.timesofisrael.com/feed/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.timesofisrael.com/feed/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.hket.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hket.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hket.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hket.com/rss.xml",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://finance.now.com/news/rss/finance_rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://finance.now.com/news/rss/finance_rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://finance.now.com/news/rss/finance_rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://finance.now.com/news/rss/finance_rss.xml",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.hkej.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkej.com/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.hkej.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkej.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkej.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkcd.com.hk/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkcd.com.hk/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkcd.com.hk/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkcd.com.hk/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hkcd.com.hk/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.singpao.com.hk/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.singpao.com.hk/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.singpao.com.hk/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.singpao.com.hk/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.singpao.com.hk/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.am730.com.hk/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.am730.com.hk/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.am730.com.hk/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.am730.com.hk/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.am730.com.hk/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.inmediahk.net/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.inmediahk.net/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://hk.news.yahoo.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bastillepost.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bastillepost.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bastillepost.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bastillepost.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bastillepost.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.tolonews.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.tolonews.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.tolonews.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.tolonews.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://armenpress.am/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://armenpress.am/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://armenpress.am/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://armenpress.am/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.trend.az/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gulf-daily-news.com/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gulf-daily-news.com/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gulf-daily-news.com/",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gulf-daily-news.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.phnompenhpost.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.phnompenhpost.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.phnompenhpost.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.phnompenhpost.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "http://www.xinhuanet.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.xinhuanet.com/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "http://www.xinhuanet.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.xinhuanet.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.xinhuanet.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.people.com.cn/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.people.com.cn/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "http://www.people.com.cn/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.people.com.cn/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.people.com.cn/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mingpao.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mingpao.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mingpao.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mingpao.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mingpao.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://udn.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://udn.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://udn.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://udn.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://udn.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofindia.indiatimes.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofindia.indiatimes.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofindia.indiatimes.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofindia.indiatimes.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofindia.indiatimes.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ndtv.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.ndtv.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.ndtv.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.ndtv.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.kompas.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kompas.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kompas.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kompas.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kompas.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.tehrantimes.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.haaretz.co.il/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.haaretz.co.il/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.haaretz.co.il/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.haaretz.co.il/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.haaretz.co.il/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.asahi.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.asahi.com/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.asahi.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.asahi.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.asahi.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nhk.or.jp/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nhk.or.jp/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nhk.or.jp/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nhk.or.jp/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nhk.or.jp/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://alghad.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://alghad.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://alghad.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://alghad.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://tengrinews.kz/rss",
+    "reason": "exception"
+  },
+  {
+    "url": "https://tengrinews.kz/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://tengrinews.kz/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://tengrinews.kz/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kuwaittimes.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.kuwaittimes.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.kuwaittimes.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.kuwaittimes.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "http://www.vientianetimes.org.la/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.vientianetimes.org.la/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.vientianetimes.org.la/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.vientianetimes.org.la/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.vientianetimes.org.la/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lorientlejour.com/feed",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lorientlejour.com/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lorientlejour.com/rss.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lorientlejour.com/index.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lorientlejour.com/atom.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.thestar.com.my/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thestar.com.my/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thestar.com.my/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thestar.com.my/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thestar.com.my/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://en.sun.mv/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://en.sun.mv/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://en.sun.mv/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://en.sun.mv/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://en.sun.mv/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://montsame.mn/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://montsame.mn/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://montsame.mn/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://montsame.mn/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://montsame.mn/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.rodong.rep.kp/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.rodong.rep.kp/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.rodong.rep.kp/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.rodong.rep.kp/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.rodong.rep.kp/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.omanobserver.om/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.omanobserver.om/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.omanobserver.om/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.omanobserver.om/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.chosun.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.chosun.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.chosun.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.chosun.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.chosun.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://www.dailymirror.lk/feed",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "http://www.dailymirror.lk/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "http://www.dailymirror.lk/rss.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "http://www.dailymirror.lk/index.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "http://www.dailymirror.lk/atom.xml",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.bangkokpost.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bangkokpost.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bangkokpost.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bangkokpost.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hurriyet.com.tr/feed",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.hurriyet.com.tr/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hurriyet.com.tr/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hurriyet.com.tr/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://en.hronikatm.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://en.hronikatm.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://en.hronikatm.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://en.hronikatm.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.thenationalnews.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thenationalnews.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thenationalnews.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thenationalnews.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.thenationalnews.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://kun.uz/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://kun.uz/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://kun.uz/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://kun.uz/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://kun.uz/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://almasdaronline.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.balkanweb.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.balkanweb.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.balkanweb.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.balkanweb.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.belta.by/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lesoir.be/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lesoir.be/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lesoir.be/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lesoir.be/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.klix.ba/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.klix.ba/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.klix.ba/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.klix.ba/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.dnevnik.bg/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.dnevnik.bg/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.dnevnik.bg/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.dnevnik.bg/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.dr.dk/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dr.dk/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dr.dk/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dr.dk/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dr.dk/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://yle.fi/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://yle.fi/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://yle.fi/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://yle.fi/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://agenda.ge/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://agenda.ge/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://agenda.ge/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://agenda.ge/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.kathimerini.gr/feed",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.kathimerini.gr/rss",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.kathimerini.gr/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kathimerini.gr/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.kathimerini.gr/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mbl.is/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.mbl.is/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.mbl.is/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.mbl.is/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.irishtimes.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.irishtimes.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.irishtimes.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.irishtimes.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.irishtimes.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.corriere.it/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.corriere.it/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.corriere.it/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.corriere.it/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.gazetaexpress.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.gazetaexpress.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.gazetaexpress.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.gazetaexpress.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.lsm.lv/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofmalta.com/feed",
+    "reason": "http_error:410"
+  },
+  {
+    "url": "https://timesofmalta.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofmalta.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofmalta.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://timesofmalta.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.volkskrant.nl/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.volkskrant.nl/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.volkskrant.nl/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.volkskrant.nl/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.publico.pt/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.publico.pt/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.publico.pt/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.publico.pt/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.publico.pt/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://tass.ru/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://tass.ru/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://tass.ru/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://tass.ru/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.delo.si/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nzz.ch/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nzz.ch/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nzz.ch/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.nzz.ch/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ukrinform.ua/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bbc.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bbc.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bbc.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bbc.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.bbc.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elwatan.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elwatan.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elwatan.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elwatan.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mmegi.bw/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mmegi.bw/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mmegi.bw/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.mmegi.bw/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cameroun-tribune.cm/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.cameroun-tribune.cm/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.cameroun-tribune.cm/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.cameroun-tribune.cm/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://tchadinfos.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://tchadinfos.com/",
+    "reason": "http_error:522"
+  },
+  {
+    "url": "https://tchadinfos.com/",
+    "reason": "http_error:522"
+  },
+  {
+    "url": "https://tchadinfos.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "http://english.ahram.org.eg/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://english.ahram.org.eg/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://english.ahram.org.eg/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://english.ahram.org.eg/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "http://english.ahram.org.eg/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ethiopianreporter.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.ethiopianreporter.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.ethiopianreporter.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.ethiopianreporter.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.union.sonapresse.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.union.sonapresse.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ghanaweb.com/feed",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.ghanaweb.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ghanaweb.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ghanaweb.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.ghanaweb.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.libyaobserver.ly/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.libyaobserver.ly/",
+    "reason": "http_error:400"
+  },
+  {
+    "url": "https://www.libyaobserver.ly/",
+    "reason": "http_error:400"
+  },
+  {
+    "url": "https://www.libyaobserver.ly/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.maliweb.net/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.maliweb.net/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.maliweb.net/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.maliweb.net/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lexpress.mu/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lexpress.mu/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lexpress.mu/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.lexpress.mu/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://noticias.co.mz/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://noticias.co.mz/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://noticias.co.mz/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://noticias.co.mz/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.actuniger.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.actuniger.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.actuniger.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.actuniger.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.actuniger.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.newtimes.co.rw/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.newtimes.co.rw/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.newtimes.co.rw/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.newtimes.co.rw/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.seneweb.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.seneweb.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.seneweb.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.seneweb.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.seneweb.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hiiraan.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hiiraan.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hiiraan.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.hiiraan.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.news24.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.news24.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.news24.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.news24.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.sudantribune.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.sudantribune.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.sudantribune.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.sudantribune.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.thecitizen.co.tz/tanzania/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.togofirst.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.togofirst.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.togofirst.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.togofirst.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.togofirst.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.monitor.co.ug/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.monitor.co.ug/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.monitor.co.ug/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.monitor.co.ug/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.herald.co.zw/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.herald.co.zw/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.herald.co.zw/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.herald.co.zw/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.breakingbelizenews.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.breakingbelizenews.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.breakingbelizenews.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.breakingbelizenews.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.lostiempos.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.lostiempos.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.folha.uol.com.br/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.folha.uol.com.br/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.folha.uol.com.br/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cbc.ca/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cbc.ca/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cbc.ca/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.cbc.ca/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://ici.radio-canada.ca/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://ici.radio-canada.ca/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://ici.radio-canada.ca/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://ici.radio-canada.ca/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.latercera.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.eltiempo.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.eltiempo.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.eltiempo.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.eltiempo.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.nacion.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://listindiario.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://listindiario.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://listindiario.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://listindiario.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.laprensa.hn/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laprensa.hn/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laprensa.hn/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laprensa.hn/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laprensa.hn/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.eluniversal.com.mx/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.eluniversal.com.mx/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.eluniversal.com.mx/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.eluniversal.com.mx/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.eluniversal.com.mx/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laprensa.com.ni/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.laprensa.com.ni/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.laprensa.com.ni/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.laprensa.com.ni/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.laestrella.com.pa/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laestrella.com.pa/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laestrella.com.pa/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laestrella.com.pa/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.laestrella.com.pa/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.com.py/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.com.py/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.com.py/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.com.py/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.com.py/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elnuevodia.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elnuevodia.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elnuevodia.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.elnuevodia.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.guardian.co.tt/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.guardian.co.tt/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.guardian.co.tt/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.guardian.co.tt/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.guardian.co.tt/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.washingtonpost.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.washingtonpost.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.washingtonpost.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.washingtonpost.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.elpais.com.uy/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.elpais.com.uy/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.elpais.com.uy/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.elpais.com.uy/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.abc.net.au/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.net.au/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.net.au/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.net.au/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.abc.net.au/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.samoaobserver.ws/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.samoaobserver.ws/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.samoaobserver.ws/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.samoaobserver.ws/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.samoaobserver.ws/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://matangitonga.to/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://matangitonga.to/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.rfi.fr/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.rfi.fr/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.rfi.fr/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.rfi.fr/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.dw.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dw.com/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dw.com/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dw.com/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.dw.com/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.euronews.com/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.france24.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.france24.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.france24.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.france24.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.diariandorra.ad/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.diariandorra.ad/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.diariandorra.ad/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.diariandorra.ad/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://antiguaobserver.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://antiguaobserver.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://antiguaobserver.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://antiguaobserver.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://borneobulletin.com.bn/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://borneobulletin.com.bn/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://borneobulletin.com.bn/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://borneobulletin.com.bn/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.alwatwan.net/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.alwatwan.net/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.alwatwan.net/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.alwatwan.net/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://lanation.dj/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://lanation.dj/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://lanation.dj/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://lanation.dj/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://ahoraeg.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://ahoraeg.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://ahoraeg.com/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://ahoraeg.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.vaterland.li/feed",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.vaterland.li/rss",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.vaterland.li/rss.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.vaterland.li/index.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.vaterland.li/atom.xml",
+    "reason": "http_error:404"
+  },
+  {
+    "url": "https://www.marshallislandsjournal.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.marshallislandsjournal.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.marshallislandsjournal.com/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.marshallislandsjournal.com/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.kpress.info/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.kpress.info/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.kpress.info/",
+    "reason": "http_error:403"
+  },
+  {
+    "url": "https://www.kpress.info/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.monaco-matin.mc/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.monaco-matin.mc/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.monaco-matin.mc/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.monaco-matin.mc/",
+    "reason": "no_entries"
+  },
+  {
+    "url": "https://www.naurugov.nr/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.naurugov.nr/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.naurugov.nr/",
+    "reason": "exception"
+  },
+  {
+    "url": "https://www.naurugov.nr/",
+    "reason": "no_entries"
+  }
+]

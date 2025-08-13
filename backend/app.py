@@ -440,26 +440,31 @@ def create_app() -> Flask:
 					article.lang = lang or article.lang
 					updated += 1
 				else:
-					if category is None and ml_classify is not None:
-						try:
-							category = ml_classify(f"{title}\n{summary or ''}") or "general"
-						except Exception:
-							category = "general"
-						article = Article(
-							title=title,
-							url=url,
-							summary=summary,
-							source=source,
-							category=category or "general",
-							categories=categories_str,
-							country=(it.get("country") or infer_country_from_url(url)),
-							published_at=published_at,
-							url_canonical=url_canonical,
-							url_hash=url_hash_val,
-							source_norm=source_norm,
-							lang=lang,
-						)
-					session.add(article)
+					# Determine final category
+					final_category = category
+					if final_category is None:
+						if ml_classify is not None:
+							try:
+								final_category = ml_classify(f"{title}\n{summary or ''}") or "general"
+							except Exception:
+								final_category = "general"
+						else:
+							final_category = "general"
+					new_article = Article(
+						title=title,
+						url=url,
+						summary=summary,
+						source=source,
+						category=final_category or "general",
+						categories=categories_str,
+						country=(it.get("country") or infer_country_from_url(url)),
+						published_at=published_at,
+						url_canonical=url_canonical,
+						url_hash=url_hash_val,
+						source_norm=source_norm,
+						lang=lang,
+					)
+					session.add(new_article)
 					created += 1
 			session.commit()
 			return jsonify({"created": created, "updated": updated})

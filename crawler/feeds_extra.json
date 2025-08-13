@@ -1,0 +1,1196 @@
+[
+  {
+    "url": "https://www.tolonews.com/",
+    "source": "TOLOnews",
+    "country": "af",
+    "category": "world"
+  },
+  {
+    "url": "https://armenpress.am/",
+    "source": "Armenpress",
+    "country": "am",
+    "category": "world"
+  },
+  {
+    "url": "https://www.trend.az/",
+    "source": "Trend News Agency",
+    "country": "az",
+    "category": "world"
+  },
+  {
+    "url": "https://www.gulf-daily-news.com/",
+    "source": "Gulf Daily News",
+    "country": "bh",
+    "category": "world"
+  },
+  {
+    "url": "https://www.prothomalo.com/",
+    "source": "Prothom Alo",
+    "country": "bd",
+    "category": "world"
+  },
+  {
+    "url": "https://kuenselonline.com/",
+    "source": "Kuensel",
+    "country": "bt",
+    "category": "world"
+  },
+  {
+    "url": "https://www.phnompenhpost.com/",
+    "source": "Phnom Penh Post",
+    "country": "kh",
+    "category": "world"
+  },
+  {
+    "url": "http://www.xinhuanet.com/",
+    "source": "新華網",
+    "country": "cn",
+    "category": "world"
+  },
+  {
+    "url": "http://www.people.com.cn/",
+    "source": "人民網",
+    "country": "cn",
+    "category": "world"
+  },
+  {
+    "url": "https://www.mingpao.com/",
+    "source": "明報",
+    "country": "hk",
+    "category": "local"
+  },
+  {
+    "url": "https://udn.com/",
+    "source": "聯合新聞網",
+    "country": "tw",
+    "category": "world"
+  },
+  {
+    "url": "https://timesofindia.indiatimes.com/",
+    "source": "The Times of India",
+    "country": "in",
+    "category": "world"
+  },
+  {
+    "url": "https://www.ndtv.com/",
+    "source": "NDTV",
+    "country": "in",
+    "category": "world"
+  },
+  {
+    "url": "https://www.kompas.com/",
+    "source": "Kompas",
+    "country": "id",
+    "category": "world"
+  },
+  {
+    "url": "https://www.tehrantimes.com/",
+    "source": "Tehran Times",
+    "country": "ir",
+    "category": "world"
+  },
+  {
+    "url": "https://www.rudaw.net/",
+    "source": "Rudaw",
+    "country": "iq",
+    "category": "world"
+  },
+  {
+    "url": "https://www.haaretz.co.il/",
+    "source": "Haaretz",
+    "country": "il",
+    "category": "world"
+  },
+  {
+    "url": "https://www.asahi.com/",
+    "source": "朝日新聞",
+    "country": "jp",
+    "category": "world"
+  },
+  {
+    "url": "https://www.nhk.or.jp/",
+    "source": "NHK",
+    "country": "jp",
+    "category": "world"
+  },
+  {
+    "url": "https://alghad.com/",
+    "source": "Al Ghad",
+    "country": "jo",
+    "category": "world"
+  },
+  {
+    "url": "https://tengrinews.kz/",
+    "source": "Tengrinews",
+    "country": "kz",
+    "category": "world"
+  },
+  {
+    "url": "https://www.kuwaittimes.com/",
+    "source": "Kuwait Times",
+    "country": "kw",
+    "category": "world"
+  },
+  {
+    "url": "https://24.kg/",
+    "source": "24.kg",
+    "country": "kg",
+    "category": "world"
+  },
+  {
+    "url": "http://www.vientianetimes.org.la/",
+    "source": "Vientiane Times",
+    "country": "la",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lorientlejour.com/",
+    "source": "L'Orient-Le Jour",
+    "country": "lb",
+    "category": "world"
+  },
+  {
+    "url": "https://www.thestar.com.my/",
+    "source": "The Star",
+    "country": "my",
+    "category": "world"
+  },
+  {
+    "url": "https://en.sun.mv/",
+    "source": "Sun Online",
+    "country": "mv",
+    "category": "world"
+  },
+  {
+    "url": "https://montsame.mn/",
+    "source": "Montsame",
+    "country": "mn",
+    "category": "world"
+  },
+  {
+    "url": "https://www.irrawaddy.com/",
+    "source": "The Irrawaddy",
+    "country": "mm",
+    "category": "world"
+  },
+  {
+    "url": "https://kathmandupost.com/",
+    "source": "The Kathmandu Post",
+    "country": "np",
+    "category": "world"
+  },
+  {
+    "url": "http://www.rodong.rep.kp/",
+    "source": "勞動新聞",
+    "country": "kp",
+    "category": "world"
+  },
+  {
+    "url": "https://www.omanobserver.om/",
+    "source": "Oman Observer",
+    "country": "om",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dawn.com/",
+    "source": "Dawn",
+    "country": "pk",
+    "category": "world"
+  },
+  {
+    "url": "https://www.inquirer.net/",
+    "source": "Philippine Daily Inquirer",
+    "country": "ph",
+    "category": "world"
+  },
+  {
+    "url": "https://www.aljazeera.net/",
+    "source": "Al Jazeera (AR)",
+    "country": "qa",
+    "category": "world"
+  },
+  {
+    "url": "https://www.arabnews.com/",
+    "source": "Arab News",
+    "country": "sa",
+    "category": "world"
+  },
+  {
+    "url": "https://www.straitstimes.com/",
+    "source": "The Straits Times",
+    "country": "sg",
+    "category": "world"
+  },
+  {
+    "url": "https://www.chosun.com/",
+    "source": "朝鮮日報",
+    "country": "kr",
+    "category": "world"
+  },
+  {
+    "url": "http://www.dailymirror.lk/",
+    "source": "Daily Mirror",
+    "country": "lk",
+    "category": "world"
+  },
+  {
+    "url": "https://sana.sy/",
+    "source": "SANA",
+    "country": "sy",
+    "category": "world"
+  },
+  {
+    "url": "https://asiaplustj.info/",
+    "source": "Asia-Plus",
+    "country": "tj",
+    "category": "world"
+  },
+  {
+    "url": "https://www.bangkokpost.com/",
+    "source": "Bangkok Post",
+    "country": "th",
+    "category": "world"
+  },
+  {
+    "url": "https://tatoli.tl/",
+    "source": "Tatoli",
+    "country": "tl",
+    "category": "world"
+  },
+  {
+    "url": "https://www.hurriyet.com.tr/",
+    "source": "Hürriyet",
+    "country": "tr",
+    "category": "world"
+  },
+  {
+    "url": "https://en.hronikatm.com/",
+    "source": "Chronicles of Turkmenistan",
+    "country": "tm",
+    "category": "world"
+  },
+  {
+    "url": "https://www.thenationalnews.com/",
+    "source": "The National",
+    "country": "ae",
+    "category": "world"
+  },
+  {
+    "url": "https://kun.uz/",
+    "source": "Kun.uz",
+    "country": "uz",
+    "category": "world"
+  },
+  {
+    "url": "https://tuoitre.vn/",
+    "source": "Tuoi Tre",
+    "country": "vn",
+    "category": "world"
+  },
+  {
+    "url": "https://almasdaronline.com/",
+    "source": "Almasdar Online",
+    "country": "ye",
+    "category": "world"
+  },
+  {
+    "url": "https://www.balkanweb.com/",
+    "source": "BalkanWeb",
+    "country": "al",
+    "category": "world"
+  },
+  {
+    "url": "https://www.derstandard.at/",
+    "source": "Der Standard",
+    "country": "at",
+    "category": "world"
+  },
+  {
+    "url": "https://www.belta.by/",
+    "source": "BelTA",
+    "country": "by",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lesoir.be/",
+    "source": "Le Soir",
+    "country": "be",
+    "category": "world"
+  },
+  {
+    "url": "https://www.klix.ba/",
+    "source": "Klix",
+    "country": "ba",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dnevnik.bg/",
+    "source": "Dnevnik",
+    "country": "bg",
+    "category": "world"
+  },
+  {
+    "url": "https://www.jutarnji.hr/",
+    "source": "Jutarnji List",
+    "country": "hr",
+    "category": "world"
+  },
+  {
+    "url": "https://cyprus-mail.com/",
+    "source": "Cyprus Mail",
+    "country": "cy",
+    "category": "world"
+  },
+  {
+    "url": "https://www.idnes.cz/",
+    "source": "iDNES",
+    "country": "cz",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dr.dk/",
+    "source": "DR",
+    "country": "dk",
+    "category": "world"
+  },
+  {
+    "url": "https://www.err.ee/",
+    "source": "ERR",
+    "country": "ee",
+    "category": "world"
+  },
+  {
+    "url": "https://yle.fi/",
+    "source": "Yle",
+    "country": "fi",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lemonde.fr/",
+    "source": "Le Monde",
+    "country": "fr",
+    "category": "world"
+  },
+  {
+    "url": "https://agenda.ge/",
+    "source": "Agenda.ge",
+    "country": "ge",
+    "category": "world"
+  },
+  {
+    "url": "https://www.spiegel.de/",
+    "source": "Der Spiegel",
+    "country": "de",
+    "category": "world"
+  },
+  {
+    "url": "https://www.kathimerini.gr/",
+    "source": "Kathimerini",
+    "country": "gr",
+    "category": "world"
+  },
+  {
+    "url": "https://magyarnemzet.hu/",
+    "source": "Magyar Nemzet",
+    "country": "hu",
+    "category": "world"
+  },
+  {
+    "url": "https://www.mbl.is/",
+    "source": "Morgunbladid",
+    "country": "is",
+    "category": "world"
+  },
+  {
+    "url": "https://www.irishtimes.com/",
+    "source": "The Irish Times",
+    "country": "ie",
+    "category": "world"
+  },
+  {
+    "url": "https://www.corriere.it/",
+    "source": "Corriere della Sera",
+    "country": "it",
+    "category": "world"
+  },
+  {
+    "url": "https://www.gazetaexpress.com/",
+    "source": "Gazeta Express",
+    "country": "xk",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lsm.lv/",
+    "source": "LSM",
+    "country": "lv",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lrt.lt/",
+    "source": "LRT",
+    "country": "lt",
+    "category": "world"
+  },
+  {
+    "url": "https://www.wort.lu/",
+    "source": "Luxemburger Wort",
+    "country": "lu",
+    "category": "world"
+  },
+  {
+    "url": "https://timesofmalta.com/",
+    "source": "Times of Malta",
+    "country": "mt",
+    "category": "world"
+  },
+  {
+    "url": "https://www.ipn.md/",
+    "source": "IPN",
+    "country": "md",
+    "category": "world"
+  },
+  {
+    "url": "https://www.vijesti.me/",
+    "source": "Vijesti",
+    "country": "me",
+    "category": "world"
+  },
+  {
+    "url": "https://www.volkskrant.nl/",
+    "source": "De Volkskrant",
+    "country": "nl",
+    "category": "world"
+  },
+  {
+    "url": "https://www.mkd.mk/",
+    "source": "MKD",
+    "country": "mk",
+    "category": "world"
+  },
+  {
+    "url": "https://www.aftenposten.no/",
+    "source": "Aftenposten",
+    "country": "no",
+    "category": "world"
+  },
+  {
+    "url": "https://wyborcza.pl/",
+    "source": "Gazeta Wyborcza",
+    "country": "pl",
+    "category": "world"
+  },
+  {
+    "url": "https://www.publico.pt/",
+    "source": "Publico",
+    "country": "pt",
+    "category": "world"
+  },
+  {
+    "url": "https://www.digi24.ro/",
+    "source": "Digi24",
+    "country": "ro",
+    "category": "world"
+  },
+  {
+    "url": "https://tass.ru/",
+    "source": "TASS",
+    "country": "ru",
+    "category": "world"
+  },
+  {
+    "url": "https://www.blic.rs/",
+    "source": "Blic",
+    "country": "rs",
+    "category": "world"
+  },
+  {
+    "url": "https://www.sme.sk/",
+    "source": "SME",
+    "country": "sk",
+    "category": "world"
+  },
+  {
+    "url": "https://www.delo.si/",
+    "source": "Delo",
+    "country": "si",
+    "category": "world"
+  },
+  {
+    "url": "https://elpais.com/",
+    "source": "El Pais (ES)",
+    "country": "es",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dn.se/",
+    "source": "Dagens Nyheter",
+    "country": "se",
+    "category": "world"
+  },
+  {
+    "url": "https://www.nzz.ch/",
+    "source": "NZZ",
+    "country": "ch",
+    "category": "world"
+  },
+  {
+    "url": "https://www.ukrinform.ua/",
+    "source": "Ukrinform",
+    "country": "ua",
+    "category": "world"
+  },
+  {
+    "url": "https://www.bbc.com/news",
+    "source": "BBC News",
+    "country": "gb",
+    "category": "world"
+  },
+  {
+    "url": "https://www.elwatan.com/",
+    "source": "El Watan",
+    "country": "dz",
+    "category": "world"
+  },
+  {
+    "url": "https://www.jornaldeangola.ao/",
+    "source": "Jornal de Angola",
+    "country": "ao",
+    "category": "world"
+  },
+  {
+    "url": "https://lanouvelletribune.info/",
+    "source": "La Nouvelle Tribune",
+    "country": "bj",
+    "category": "world"
+  },
+  {
+    "url": "https://www.mmegi.bw/",
+    "source": "Mmegi",
+    "country": "bw",
+    "category": "world"
+  },
+  {
+    "url": "http://www.sidwaya.bf/",
+    "source": "Sidwaya",
+    "country": "bf",
+    "category": "world"
+  },
+  {
+    "url": "https://www.iwacu-burundi.org/",
+    "source": "IWACU",
+    "country": "bi",
+    "category": "world"
+  },
+  {
+    "url": "https://www.cameroun-tribune.cm/",
+    "source": "Cameroon Tribune",
+    "country": "cm",
+    "category": "world"
+  },
+  {
+    "url": "https://anacao.cv/",
+    "source": "A Nacao",
+    "country": "cv",
+    "category": "world"
+  },
+  {
+    "url": "https://tchadinfos.com/",
+    "source": "Tchad Infos",
+    "country": "td",
+    "category": "world"
+  },
+  {
+    "url": "https://www.actualite.cd/",
+    "source": "Actualite.cd",
+    "country": "cd",
+    "category": "world"
+  },
+  {
+    "url": "http://english.ahram.org.eg/",
+    "source": "Ahram Online",
+    "country": "eg",
+    "category": "world"
+  },
+  {
+    "url": "https://www.ethiopianreporter.com/",
+    "source": "Ethiopian Reporter",
+    "country": "et",
+    "category": "world"
+  },
+  {
+    "url": "https://www.union.sonapresse.com/",
+    "source": "L'Union",
+    "country": "ga",
+    "category": "world"
+  },
+  {
+    "url": "http://thepoint.gm/",
+    "source": "The Point",
+    "country": "gm",
+    "category": "world"
+  },
+  {
+    "url": "https://www.ghanaweb.com/",
+    "source": "GhanaWeb",
+    "country": "gh",
+    "category": "world"
+  },
+  {
+    "url": "https://guineenews.org/",
+    "source": "Guinee News",
+    "country": "gn",
+    "category": "world"
+  },
+  {
+    "url": "https://nation.africa/kenya",
+    "source": "Daily Nation",
+    "country": "ke",
+    "category": "world"
+  },
+  {
+    "url": "https://lestimes.com/",
+    "source": "Lesotho Times",
+    "country": "ls",
+    "category": "world"
+  },
+  {
+    "url": "https://frontpageafricaonline.com/",
+    "source": "FrontPage Africa",
+    "country": "lr",
+    "category": "world"
+  },
+  {
+    "url": "https://www.libyaobserver.ly/",
+    "source": "Libya Observer",
+    "country": "ly",
+    "category": "world"
+  },
+  {
+    "url": "https://www.midi-madagasikara.mg/",
+    "source": "Midi Madagasikara",
+    "country": "mg",
+    "category": "world"
+  },
+  {
+    "url": "https://www.nyasatimes.com/",
+    "source": "Nyasa Times",
+    "country": "mw",
+    "category": "world"
+  },
+  {
+    "url": "https://www.maliweb.net/",
+    "source": "Maliweb",
+    "country": "ml",
+    "category": "world"
+  },
+  {
+    "url": "https://saharamedias.net/",
+    "source": "Sahara Media",
+    "country": "mr",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lexpress.mu/",
+    "source": "L'Express (MU)",
+    "country": "mu",
+    "category": "world"
+  },
+  {
+    "url": "https://www.hespress.com/",
+    "source": "Hespress",
+    "country": "ma",
+    "category": "world"
+  },
+  {
+    "url": "https://noticias.co.mz/",
+    "source": "Notícias",
+    "country": "mz",
+    "category": "world"
+  },
+  {
+    "url": "https://www.namibian.com.na/",
+    "source": "The Namibian",
+    "country": "na",
+    "category": "world"
+  },
+  {
+    "url": "https://www.actuniger.com/",
+    "source": "ActuNiger",
+    "country": "ne",
+    "category": "world"
+  },
+  {
+    "url": "https://www.premiumtimesng.com/",
+    "source": "Premium Times",
+    "country": "ng",
+    "category": "world"
+  },
+  {
+    "url": "https://www.newtimes.co.rw/",
+    "source": "The New Times",
+    "country": "rw",
+    "category": "world"
+  },
+  {
+    "url": "https://www.seneweb.com/",
+    "source": "Seneweb",
+    "country": "sn",
+    "category": "world"
+  },
+  {
+    "url": "https://www.seychellesnewsagency.com/",
+    "source": "Seychelles News Agency",
+    "country": "sc",
+    "category": "world"
+  },
+  {
+    "url": "https://awoko.org/",
+    "source": "Awoko",
+    "country": "sl",
+    "category": "world"
+  },
+  {
+    "url": "https://www.hiiraan.com/",
+    "source": "Hiiraan Online",
+    "country": "so",
+    "category": "world"
+  },
+  {
+    "url": "https://www.news24.com/",
+    "source": "News24",
+    "country": "za",
+    "category": "world"
+  },
+  {
+    "url": "https://eyeradio.org/",
+    "source": "Eye Radio",
+    "country": "ss",
+    "category": "world"
+  },
+  {
+    "url": "https://www.sudantribune.com/",
+    "source": "Sudan Tribune",
+    "country": "sd",
+    "category": "world"
+  },
+  {
+    "url": "https://www.thecitizen.co.tz/",
+    "source": "The Citizen",
+    "country": "tz",
+    "category": "world"
+  },
+  {
+    "url": "https://www.togofirst.com/",
+    "source": "Togo First",
+    "country": "tg",
+    "category": "world"
+  },
+  {
+    "url": "https://kapitalis.com/",
+    "source": "Kapitalis",
+    "country": "tn",
+    "category": "world"
+  },
+  {
+    "url": "https://www.monitor.co.ug/",
+    "source": "Daily Monitor",
+    "country": "ug",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lusakatimes.com/",
+    "source": "Lusaka Times",
+    "country": "zm",
+    "category": "world"
+  },
+  {
+    "url": "https://www.herald.co.zw/",
+    "source": "The Herald (ZW)",
+    "country": "zw",
+    "category": "world"
+  },
+  {
+    "url": "https://www.clarin.com/",
+    "source": "Clarin",
+    "country": "ar",
+    "category": "world"
+  },
+  {
+    "url": "https://www.tribune242.com/",
+    "source": "The Tribune (BS)",
+    "country": "bs",
+    "category": "world"
+  },
+  {
+    "url": "https://barbadostoday.bb/",
+    "source": "Barbados Today",
+    "country": "bb",
+    "category": "world"
+  },
+  {
+    "url": "https://www.breakingbelizenews.com/",
+    "source": "Breaking Belize News",
+    "country": "bz",
+    "category": "world"
+  },
+  {
+    "url": "https://www.lostiempos.com/",
+    "source": "Los Tiempos",
+    "country": "bo",
+    "category": "world"
+  },
+  {
+    "url": "https://www.folha.uol.com.br/",
+    "source": "Folha de S.Paulo",
+    "country": "br",
+    "category": "world"
+  },
+  {
+    "url": "https://www.cbc.ca/news",
+    "source": "CBC News",
+    "country": "ca",
+    "category": "world"
+  },
+  {
+    "url": "https://ici.radio-canada.ca/",
+    "source": "Radio-Canada",
+    "country": "ca",
+    "category": "world"
+  },
+  {
+    "url": "https://www.latercera.com/",
+    "source": "La Tercera",
+    "country": "cl",
+    "category": "world"
+  },
+  {
+    "url": "https://www.eltiempo.com/",
+    "source": "El Tiempo",
+    "country": "co",
+    "category": "world"
+  },
+  {
+    "url": "https://www.nacion.com/",
+    "source": "La Nacion (CR)",
+    "country": "cr",
+    "category": "world"
+  },
+  {
+    "url": "http://www.granma.cu/",
+    "source": "Granma",
+    "country": "cu",
+    "category": "world"
+  },
+  {
+    "url": "https://listindiario.com/",
+    "source": "Listin Diario",
+    "country": "do",
+    "category": "world"
+  },
+  {
+    "url": "https://www.eluniverso.com/",
+    "source": "El Universo",
+    "country": "ec",
+    "category": "world"
+  },
+  {
+    "url": "https://www.elsalvador.com/",
+    "source": "El Diario de Hoy",
+    "country": "sv",
+    "category": "world"
+  },
+  {
+    "url": "https://www.prensalibre.com/",
+    "source": "Prensa Libre",
+    "country": "gt",
+    "category": "world"
+  },
+  {
+    "url": "https://www.stabroeknews.com/",
+    "source": "Stabroek News",
+    "country": "gy",
+    "category": "world"
+  },
+  {
+    "url": "https://lenouvelliste.com/",
+    "source": "Le Nouvelliste",
+    "country": "ht",
+    "category": "world"
+  },
+  {
+    "url": "https://www.laprensa.hn/",
+    "source": "La Prensa (HN)",
+    "country": "hn",
+    "category": "world"
+  },
+  {
+    "url": "https://www.jamaicaobserver.com/",
+    "source": "Jamaica Observer",
+    "country": "jm",
+    "category": "world"
+  },
+  {
+    "url": "https://www.eluniversal.com.mx/",
+    "source": "El Universal (MX)",
+    "country": "mx",
+    "category": "world"
+  },
+  {
+    "url": "https://www.laprensa.com.ni/",
+    "source": "La Prensa (NI)",
+    "country": "ni",
+    "category": "world"
+  },
+  {
+    "url": "https://www.laestrella.com.pa/",
+    "source": "La Estrella de Panama",
+    "country": "pa",
+    "category": "world"
+  },
+  {
+    "url": "https://www.abc.com.py/",
+    "source": "ABC Color",
+    "country": "py",
+    "category": "world"
+  },
+  {
+    "url": "https://elcomercio.pe/",
+    "source": "El Comercio (PE)",
+    "country": "pe",
+    "category": "world"
+  },
+  {
+    "url": "https://www.elnuevodia.com/",
+    "source": "El Nuevo Dia",
+    "country": "pr",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dwtonline.com/",
+    "source": "De Ware Tijd",
+    "country": "sr",
+    "category": "world"
+  },
+  {
+    "url": "https://www.guardian.co.tt/",
+    "source": "Trinidad Guardian",
+    "country": "tt",
+    "category": "world"
+  },
+  {
+    "url": "https://www.nytimes.com/",
+    "source": "The New York Times",
+    "country": "us",
+    "category": "world"
+  },
+  {
+    "url": "https://www.washingtonpost.com/",
+    "source": "The Washington Post",
+    "country": "us",
+    "category": "world"
+  },
+  {
+    "url": "https://www.elpais.com.uy/",
+    "source": "El Pais (UY)",
+    "country": "uy",
+    "category": "world"
+  },
+  {
+    "url": "https://www.elnacional.com/",
+    "source": "El Nacional (VE)",
+    "country": "ve",
+    "category": "world"
+  },
+  {
+    "url": "https://www.abc.net.au/news/",
+    "source": "ABC News AU",
+    "country": "au",
+    "category": "world"
+  },
+  {
+    "url": "https://www.fijitimes.com/",
+    "source": "Fiji Times",
+    "country": "fj",
+    "category": "world"
+  },
+  {
+    "url": "https://www.stuff.co.nz/",
+    "source": "Stuff NZ",
+    "country": "nz",
+    "category": "world"
+  },
+  {
+    "url": "https://postcourier.com.pg/",
+    "source": "Post-Courier",
+    "country": "pg",
+    "category": "world"
+  },
+  {
+    "url": "https://www.samoaobserver.ws/",
+    "source": "Samoa Observer",
+    "country": "ws",
+    "category": "world"
+  },
+  {
+    "url": "https://www.solomonstarnews.com/",
+    "source": "Solomon Star",
+    "country": "sb",
+    "category": "world"
+  },
+  {
+    "url": "https://matangitonga.to/",
+    "source": "Matangi Tonga",
+    "country": "to",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dailypost.vu/",
+    "source": "Vanuatu Daily Post",
+    "country": "vu",
+    "category": "world"
+  },
+  {
+    "url": "https://www.rfi.fr/",
+    "source": "RFI",
+    "country": "fr",
+    "category": "world"
+  },
+  {
+    "url": "https://www.dw.com/",
+    "source": "DW",
+    "country": "de",
+    "category": "world"
+  },
+  {
+    "url": "https://www.aljazeera.com/",
+    "source": "Al Jazeera EN",
+    "country": "qa",
+    "category": "world"
+  },
+  {
+    "url": "https://www.euronews.com/",
+    "source": "Euronews",
+    "country": "fr",
+    "category": "world"
+  },
+  {
+    "url": "https://www.france24.com/",
+    "source": "France 24",
+    "country": "fr",
+    "category": "world"
+  },
+  {
+    "url": "https://sputniknews.com/",
+    "source": "Sputnik",
+    "country": "ru",
+    "category": "world"
+  },
+  {
+    "url": "https://www.pressenza.com/",
+    "source": "Pressenza",
+    "country": "it",
+    "category": "world"
+  },
+  {
+    "url": "https://www.diariandorra.ad/",
+    "source": "Diari d'Andorra",
+    "country": "ad",
+    "category": "world"
+  },
+  {
+    "url": "https://antiguaobserver.com/",
+    "source": "Antigua Observer",
+    "country": "ag",
+    "category": "world"
+  },
+  {
+    "url": "https://borneobulletin.com.bn/",
+    "source": "Borneo Bulletin",
+    "country": "bn",
+    "category": "world"
+  },
+  {
+    "url": "https://www.alwatwan.net/",
+    "source": "Al-Watwan",
+    "country": "km",
+    "category": "world"
+  },
+  {
+    "url": "https://lanation.dj/",
+    "source": "La Nation (DJ)",
+    "country": "dj",
+    "category": "world"
+  },
+  {
+    "url": "https://ahoraeg.com/",
+    "source": "Ahora EG",
+    "country": "gq",
+    "category": "world"
+  },
+  {
+    "url": "https://shabait.com/",
+    "source": "Eritrea MOI",
+    "country": "er",
+    "category": "world"
+  },
+  {
+    "url": "https://www.times.co.sz/",
+    "source": "Times of Eswatini",
+    "country": "sz",
+    "category": "world"
+  },
+  {
+    "url": "https://nowgrenada.com/",
+    "source": "NOW Grenada",
+    "country": "gd",
+    "category": "world"
+  },
+  {
+    "url": "https://www.vaterland.li/",
+    "source": "Vaterland",
+    "country": "li",
+    "category": "world"
+  },
+  {
+    "url": "https://www.marshallislandsjournal.com/",
+    "source": "Marshall Islands Journal",
+    "country": "mh",
+    "category": "world"
+  },
+  {
+    "url": "https://www.kpress.info/",
+    "source": "Kaselehlie Press",
+    "country": "fm",
+    "category": "world"
+  },
+  {
+    "url": "https://www.monaco-matin.mc/",
+    "source": "Monaco Matin",
+    "country": "mc",
+    "category": "world"
+  },
+  {
+    "url": "https://www.naurugov.nr/",
+    "source": "Nauru Bulletin",
+    "country": "nr",
+    "category": "world"
+  },
+  {
+    "url": "https://islandtimes.org/",
+    "source": "Island Times",
+    "country": "pw",
+    "category": "world"
+  },
+  {
+    "url": "https://stluciatimes.com/",
+    "source": "St. Lucia Times",
+    "country": "lc",
+    "category": "world"
+  },
+  {
+    "url": "https://searchlight.vc/",
+    "source": "Searchlight",
+    "country": "vc",
+    "category": "world"
+  }
+]
