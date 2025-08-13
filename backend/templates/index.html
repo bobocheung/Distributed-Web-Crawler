@@ -186,19 +186,32 @@ async function loadMeta() {
     const cty = document.getElementById('country');
     const lng = document.getElementById('lang');
     const catDisp = meta.category_display || {};
+    // Intl display name helpers for full zh-Hant coverage
+    const regionNames = (function(){ try { return new Intl.DisplayNames(['zh-Hant'], { type: 'region' }); } catch(e){ return null; } })();
+    const langNames = (function(){ try { return new Intl.DisplayNames(['zh-Hant'], { type: 'language' }); } catch(e){ return null; } })();
+    const displayCountry = (code)=> {
+        if (!code) return '（未標示）';
+        try { if (regionNames) { const n = regionNames.of(code.toUpperCase()); if (n) return n; } } catch(e){}
+        const fallback = { hk:'香港', gb:'英國', us:'美國', cn:'中國', jp:'日本', kr:'南韓', sg:'新加坡', tw:'台灣', my:'馬來西亞', th:'泰國', vn:'越南', ph:'菲律賓', id:'印尼', au:'澳洲', ca:'加拿大', de:'德國', fr:'法國', es:'西班牙', it:'意大利', nz:'紐西蘭' };
+        return fallback[code] || code;
+    };
+    const displayLang = (code)=> {
+        if (!code) return '（未標示）';
+        try { if (langNames) { const n = langNames.of(code.toLowerCase()); if (n) return n; } } catch(e){}
+        const fallback = { en:'英文', zh:'中文', ja:'日文', ko:'韓文', fr:'法文', de:'德文', es:'西文', it:'意大利文' };
+        return fallback[code] || code;
+    };
     for (const c of meta.categories) {
         const o = document.createElement('option'); o.value = c; o.textContent = catDisp[c] || c; cat.appendChild(o);
     }
     for (const s of meta.sources) {
         const o = document.createElement('option'); o.value = s; o.textContent = s || '（未標示來源）'; src.appendChild(o);
     }
-    const zhCountry = { hk:'香港', gb:'英國', us:'美國', cn:'中國', jp:'日本', kr:'南韓', sg:'新加坡', tw:'台灣', my:'馬來西亞', th:'泰國', vn:'越南', ph:'菲律賓', id:'印尼', au:'澳洲', ca:'加拿大', de:'德國', fr:'法國', es:'西班牙', it:'意大利', nz:'紐西蘭' };
     for (const c of meta.countries) {
-        const o = document.createElement('option'); o.value = c; o.textContent = zhCountry[c] || c || '（未標示）'; cty.appendChild(o);
+        const o = document.createElement('option'); o.value = c; o.textContent = displayCountry(c); cty.appendChild(o);
     }
-    const zhLang = { en:'英文', zh:'中文', ja:'日文', ko:'韓文', fr:'法文', de:'德文', es:'西文', it:'意大利文' };
     for (const l of (meta.languages || [])) {
-        const o = document.createElement('option'); o.value = l; o.textContent = zhLang[l] || l || '（未標示）'; lng.appendChild(o);
+        const o = document.createElement('option'); o.value = l; o.textContent = displayLang(l); lng.appendChild(o);
     }
 }
 
@@ -244,12 +257,14 @@ async function refreshArticles() {
         const div = document.createElement('div');
         div.className = 'article';
 		const safeSummary = (a.summary || '').replace(/<img[^>]*>/gi, '');
-		div.innerHTML = `
+        const cats = (a.categories || '').replace(/^,|,$/g,'').split(',').filter(Boolean);
+        const catBadges = cats.slice(0,3).map(c=>`<span class="badge">${(META.category_display||{})[c]||c}</span>`).join(' ');
+        div.innerHTML = `
             <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
             <div class="meta">
 				${logoForSource(a.source) ? `<img class="logo" src="${logoForSource(a.source)}" alt=""/>` : ''}
                 <span class="badge">${a.source || ''}</span>
-                <span class="badge">${a.category || 'general'}</span>
+                ${catBadges || `<span class="badge">${a.category || 'general'}</span>`}
                 <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
             </div>
 			<p>${safeSummary}</p>
@@ -356,13 +371,20 @@ async function loadStatusAndChips() {
 
         const chipsSaved = document.getElementById('chipsSaved');
         chipsSaved.innerHTML = '';
-        const chipSaved = document.createElement('div'); chipSaved.className='chip'; chipSaved.textContent='Only Saved';
+        const chipSaved = document.createElement('div'); chipSaved.className='chip'; chipSaved.textContent='僅看收藏';
         chipSaved.addEventListener('click', async ()=>{ if (!currentUserId) return alert('Please Create/Use a user first'); viewingSaves=true; viewingTrending=false; await showMySaves(); });
-        const chipTrending = document.createElement('div'); chipTrending.className='chip'; chipTrending.textContent='Trending';
+        const chipTrending = document.createElement('div'); chipTrending.className='chip'; chipTrending.textContent='熱門';
         chipTrending.addEventListener('click', async ()=>{ viewingTrending=true; viewingSaves=false; await showTrending(); });
-        const chipAll = document.createElement('div'); chipAll.className='chip'; chipAll.textContent='All Articles';
+        const chipAll = document.createElement('div'); chipAll.className='chip'; chipAll.textContent='所有文章';
         chipAll.addEventListener('click', ()=>{ viewingSaves=false; viewingTrending=false; refreshArticles(); });
         chipsSaved.appendChild(chipSaved); chipsSaved.appendChild(chipTrending); chipsSaved.appendChild(chipAll);
+
+        // failures chip
+        const chipFail = document.createElement('div'); chipFail.className='chip'; chipFail.textContent='抓取失敗';
+        chipFail.addEventListener('click', async ()=>{
+            try { const r=await fetch(`${API_BASE}/crawl_failures`); const j=await r.json(); alert(`失敗數：${(j.failures||[]).length}`); } catch(e) { alert('暫無資料'); }
+        });
+        chipsSaved.appendChild(chipFail);
 
         // country/lang stats
         try {

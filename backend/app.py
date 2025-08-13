@@ -10,6 +10,7 @@ from .db import Base, get_engine, get_session, ensure_sqlite_columns_for_article
 from .models import Article, User, UserInteraction, SavedArticle
 from .recommendation import recommend_for_user, get_default_preferences, update_preferences_from_feedback, DEFAULT_COUNTRIES, DEFAULT_CATEGORIES, CATEGORY_DISPLAY
 from .text_utils import canonicalize_url, url_hash as make_url_hash, normalize_source, detect_lang, infer_country_from_url
+from .category_rules import classify_categories, SOURCE_BIASES
 try:
 	from ml.infer import classify as ml_classify  # type: ignore
 except Exception:  # pragma: no cover
@@ -77,10 +78,10 @@ def create_app() -> Flask:
 			else:
 				query = session.query(Article)
 				if category:
-					# match either single category or multi-categories field
+					# match either single category or multi-categories field (strict)
+					from sqlalchemy import or_
 					query = query.filter(
-						(Article.category == category) |
-						(Article.categories.like(f"%,{category},%"))
+						or_(Article.category == category, Article.categories.like(f"%,{category},%"))
 					)
 				if source:
 					query = query.filter(Article.source == source)
@@ -90,6 +91,7 @@ def create_app() -> Flask:
 				if lang:
 					query = query.filter(Article.lang == lang)
 				if q:
+					# strict keyword search restricted by filters above
 					pattern = f"%{q}%"
 					query = query.filter((Article.title.ilike(pattern)) | (Article.summary.ilike(pattern)))
 				if order == "popular":
@@ -274,6 +276,17 @@ def create_app() -> Flask:
 		finally:
 			s.close()
 
+	@app.route("/crawl_failures", methods=["GET"])  # expose last crawl failures (if file exists)
+	def crawl_failures():
+		import json, os
+		path = os.path.join(os.path.dirname(__file__), "..", "crawler", "last_crawl_failures.json")
+		try:
+			with open(os.path.abspath(path), "r", encoding="utf-8") as f:
+				data = json.load(f)
+			return jsonify({"failures": data[-200:]})
+		except Exception:
+			return jsonify({"failures": []})
+
 	@app.route("/admin/fix_countries", methods=["POST"])  # one-off: fill missing countries by URL inference
 	def admin_fix_countries():
 		s = get_session()
@@ -369,29 +382,13 @@ def create_app() -> Flask:
 				url_hash_val = make_url_hash(url_canonical) if url_canonical else None
 				source_norm = normalize_source(source)
 				lang = (it.get("lang") or "").strip() or (detect_lang(summary) if summary else None)
-				# derive multi categories by simple rules
-				cats = []
-				text_for_clf = f"{title}\n{summary or ''}".lower()
-				def add_cat(key):
-					if key and key not in cats:
-						cats.append(key)
-				# rules
-				if any(k in text_for_clf for k in [" ai ","人工智能","機器學習","半導體","晶片","chip","software","app","科技","tech"]):
-					add_cat("technology")
-				if any(k in text_for_clf for k in ["經濟","inflation","cpi","gdp","經濟成長","economic"]):
-					add_cat("economy")
-				if any(k in text_for_clf for k in ["finance","bank","利率","hibor","股市","market","證券"]):
-					add_cat("finance"); add_cat("economy")
-				if any(k in text_for_clf for k in ["policy","regulation","監管","立法","政府","部長","部會"]):
-					add_cat("politics")
-				if any(k in text_for_clf for k in ["health","covid","醫療","醫院","健康"]):
-					add_cat("health")
-				if any(k in text_for_clf for k in ["sport","比賽","球隊","球員","world cup","奧運"]):
-					add_cat("sports")
-				if any(k in text_for_clf for k in ["entertainment","電影","影視","音樂","明星"]):
-					add_cat("entertainment")
-				if any(k in text_for_clf for k in ["climate","環境","污染","綠色","減碳"]):
-					add_cat("environment")
+				# multi-categories via precise regex rules
+				cats = classify_categories(f"{title}\n{summary or ''}")
+				bias = SOURCE_BIASES.get((source_norm or (source or '')).lower())
+				if bias:
+					for b in bias:
+						if b not in cats:
+							cats.append(b)
 				# fallbacks
 				if not cats:
 					cats = [category or "general"]
@@ -406,28 +403,13 @@ def create_app() -> Flask:
 					article.published_at = published_at or article.published_at
 					if not article.category:
 						article.category = category
-					# update multi-categories
-					text_for_clf_upd = f"{title}\n{summary or ''}".lower()
-					cats_upd = []
-					def add_cat_upd(k):
-						if k and k not in cats_upd:
-							cats_upd.append(k)
-					if any(k in text_for_clf_upd for k in [" ai ","人工智能","機器學習","半導體","晶片","chip","software","app","科技","tech"]):
-						add_cat_upd("technology")
-					if any(k in text_for_clf_upd for k in ["經濟","inflation","cpi","gdp","經濟成長","economic"]):
-						add_cat_upd("economy")
-					if any(k in text_for_clf_upd for k in ["finance","bank","利率","hibor","股市","market","證券"]):
-						add_cat_upd("finance")
-					if any(k in text_for_clf_upd for k in ["policy","regulation","監管","立法","政府","部長","部會"]):
-						add_cat_upd("politics")
-					if any(k in text_for_clf_upd for k in ["health","covid","醫療","醫院","健康"]):
-						add_cat_upd("health")
-					if any(k in text_for_clf_upd for k in ["sport","比賽","球隊","球員","world cup","奧運"]):
-						add_cat_upd("sports")
-					if any(k in text_for_clf_upd for k in ["entertainment","電影","影視","音樂","明星"]):
-						add_cat_upd("entertainment")
-					if any(k in text_for_clf_upd for k in ["climate","環境","污染","綠色","減碳"]):
-						add_cat_upd("environment")
+					# refresh multi-categories
+					cats_upd = classify_categories(f"{title}\n{summary or ''}")
+					bias2 = SOURCE_BIASES.get((article.source_norm or article.source or '').lower())
+					if bias2:
+						for b in bias2:
+							if b not in cats_upd:
+								cats_upd.append(b)
 					if cats_upd:
 						article.categories = "," + ",".join(sorted(set(cats_upd))) + ","
 					# prefer incoming, fallback to URL inference, then keep existing
