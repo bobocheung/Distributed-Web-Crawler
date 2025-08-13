@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Personalized News Aggregator</title>
+	<title>個人化新聞聚合器</title>
+	<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0b0c10; --card: #121318; --text: #e5e7eb; --muted: #9aa0a6;
@@ -15,139 +16,119 @@
 			--brand: #2563eb; --brand-2: #16a34a; --border: #e5e7eb;
 		}
         * { box-sizing: border-box; }
-		body { background: linear-gradient(180deg, #0b0c10 0%, #0f1116 100%); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
-		body[data-theme="light"] { background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%); }
+		body { background: #faf5e9; color: var(--text); font-family: 'Patrick Hand', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+		body[data-theme="light"] { background: #fffaf0; }
         .container { max-width: 1200px; padding: 24px; margin: 0 auto; }
         header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-        h1 { font-size: 20px; margin: 0 12px 0 0; color: #fff; }
-        input, button, select { padding: 10px 12px; font-size: 14px; border-radius: 10px; border: 1px solid var(--border); background: #0f131a; color: var(--text); }
-        button { background: var(--brand); border: 0; color: white; cursor: pointer; transition: transform .05s ease-in-out, opacity .2s; }
-        button.secondary { background: #1f2937; }
+		h1 { font-size: 26px; margin: 0 12px 0 0; color: #0f172a; }
+		input, button, select { padding: 10px 12px; font-size: 16px; border-radius: 14px; border: 2px dashed #2f3b4a; background: #ffffff; color: #0f172a; box-shadow: 3px 3px 0 #2f3b4a; }
+		button { background: #fff7cc; color: #0f172a; cursor: pointer; transition: transform .05s ease-in-out, opacity .2s; border: 3px dashed #2f3b4a; box-shadow: 4px 4px 0 #2f3b4a; font-size: 20px; }
+		button.secondary { background: #fff7cc; }
         button:hover { opacity: .92; }
         button:active { transform: translateY(1px); }
         /* layout */
         .layout { display: grid; grid-template-columns: 1fr; gap: 16px; }
         @media (min-width: 1000px) { .layout { grid-template-columns: 280px 1fr; } }
-        .toolbar { background: #0f131a; border: 1px solid var(--border); border-radius: 14px; padding: 12px; display: flex; gap: 10px; flex-wrap: wrap; position: sticky; top: 12px; z-index: 20; backdrop-filter: saturate(160%) blur(6px); }
-		[data-theme="light"] .toolbar { background: rgba(255,255,255,0.85); }
+        .toolbar { background: rgba(255,255,255,0.92); border: 2px dashed #2f3b4a; border-radius: 18px; padding: 12px; display: flex; gap: 10px; flex-wrap: wrap; position: sticky; top: 12px; z-index: 20; box-shadow: 4px 4px 0 #2f3b4a; filter: url(#sketch-wobble); }
+        [data-theme="light"] .toolbar { background: rgba(255,255,255,0.96); }
         .toolbar input[type="search"] { min-width: 240px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-        .article { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; transition: box-shadow .2s, transform .1s, border-color .2s; }
-        .article:hover { box-shadow: 0 8px 20px rgba(0,0,0,.35); border-color: #2a3342; transform: translateY(-2px); }
-        .article h3 { margin: 0 0 6px; font-size: 16px; }
-        .meta { color: var(--muted); font-size: 12px; margin-top: 2px; display:flex; gap:6px; align-items:center; }
-        .badge { border: 1px solid var(--border); background: #0c1016; padding: 2px 8px; border-radius: 999px; font-size: 11px; color: var(--muted); }
-		[data-theme="light"] .badge { background: #f3f4f6; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+        .article { background: #ffffff; border: 2px dashed #2f3b4a; border-radius: 18px; padding: 16px; transition: box-shadow .2s, transform .1s; box-shadow: 4px 4px 0 #2f3b4a; filter: url(#sketch-wobble); }
+        .article:hover { box-shadow: 6px 6px 0 #2f3b4a; transform: translateY(-1px) rotate(-0.3deg); }
+        .article h3 { margin: 0 0 6px; font-size: 20px; color: #0f172a; }
+        .article p { color: #0f172a; line-height: 1.6; }
+        .meta { color: #334155; font-size: 13px; margin-top: 2px; display:flex; gap:6px; align-items:center; }
+        .badge { border: 2px dashed #2f3b4a; background: #ffffff; padding: 2px 10px; border-radius: 999px; font-size: 12px; color: #0f172a; box-shadow: 2px 2px 0 #2f3b4a; filter: url(#sketch-wobble); }
         .actions { margin-top: 8px; display: flex; gap: 8px; }
-        a { color: #93c5fd; text-decoration: none; }
+        button.saved { background: var(--brand-2); color: #fff; }
+        a { color: #0b57d0; text-decoration: none; }
         a:hover { text-decoration: underline; }
 		/* Images from summaries: keep tidy */
 		.article img { max-width: 100%; height: auto; max-height: 220px; object-fit: cover; border-radius: 12px; margin-top: 8px; display: block; }
         .meta img.logo { width: 16px; height: 16px; border-radius: 4px; display: inline-block; }
 
         /* skeleton */
-        .skeleton { background: linear-gradient(90deg, #1a1e27 25%, #222838 37%, #1a1e27 63%); background-size: 400% 100%; animation: shimmer 1.2s ease-in-out infinite; border-radius: 12px; }
-        .skel-card { height: 160px; border: 1px solid var(--border); }
+        .skeleton { background: linear-gradient(90deg, rgba(0,0,0,.04) 25%, rgba(0,0,0,.06) 37%, rgba(0,0,0,.04) 63%); background-size: 400% 100%; animation: shimmer 1.2s ease-in-out infinite; border-radius: 18px; border: 2px dashed #2f3b4a; box-shadow: 3px 3px 0 #2f3b4a; }
+        .skel-card { height: 160px; }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
         /* chips */
-        .chips { display:flex; flex-wrap: wrap; gap:8px; margin: 8px 0 12px; }
-        .chip { padding:6px 10px; border:1px solid var(--border); background:#0f131a; color:var(--text); border-radius:999px; font-size:12px; cursor:pointer; }
-        .chip.active { background: var(--brand); color:#fff; border-color: transparent; }
+		.chips { display:flex; flex-wrap: wrap; gap:10px; margin: 8px 0 12px; }
+		.chip { padding:10px 14px; border:3px dashed #2f3b4a; background:#fff7cc; color:#0f172a; border-radius:999px; font-size:16px; cursor:pointer; box-shadow: 4px 4px 0 #2f3b4a; font-weight:700; }
+		.chip.active { background: #fff7cc; color:#0b57d0; border-color: #0b57d0; }
 
         /* stats */
         .stats { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:12px; margin:12px 0; }
-        .stat { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:12px; font-size:13px; }
+        .stat { background: #ffffff; border:2px dashed #2f3b4a; border-radius:16px; padding:12px; font-size:13px; box-shadow: 3px 3px 0 #2f3b4a; }
     </style>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="sketch-wobble">
+    <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="3" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 </head>
 <body>
 <div class="container">
 <header>
-    <h1>Personalized News</h1>
+    <h1>個人化新聞</h1>
     <input id="email" placeholder="you@example.com"/>
-    <button id="createUser">Create / Use</button>
+    <button id="createUser">建立 / 使用</button>
     <span id="userInfo" class="badge"></span>
-    <button id="refresh" class="secondary">Refresh</button>
-    <button id="themeToggle" class="secondary" title="Toggle light/dark">Theme</button>
-    <button id="densityToggle" class="secondary" title="Toggle density">Density</button>
+    <button id="refresh" class="secondary">刷新</button>
+    <button id="themeToggle" class="secondary" title="切換明暗">主題</button>
+    <button id="densityToggle" class="secondary" title="切換密度">密度</button>
+    <button id="mySaves" class="secondary" title="查看收藏">我的收藏</button>
 </header>
 
-<section class="toolbar" style="margin-bottom:18px;">
-    <label>Category
-        <select id="category">
-            <option value="">All</option>
-        </select>
-    </label>
-    <label>Source
-        <select id="source">
-            <option value="">All</option>
-        </select>
-    </label>
-    <label>Country
-        <select id="country">
-            <option value="">All</option>
-        </select>
-    </label>
-    <label>Lang
-        <select id="lang">
-            <option value="">All</option>
-        </select>
-    </label>
-    <input id="search" type="search" placeholder="Search titles or summaries..." />
-    <label>Order
-        <select id="order">
-            <option value="newest" selected>Newest</option>
-            <option value="oldest">Oldest</option>
-                    <option value="popular">Popular</option>
-        </select>
-    </label>
-    <button id="applyFilters">Apply</button>
-</section>
+<!-- removed duplicate top toolbar -->
 <div class="layout">
     <aside>
         <section class="toolbar">
-            <label>Category
+            <label>分類
                 <select id="category">
                     <option value="">All</option>
                 </select>
             </label>
-            <label>Source
+            <label>來源
                 <select id="source">
                     <option value="">All</option>
                 </select>
             </label>
-            <label>Country
+            <label>國家
                 <select id="country">
                     <option value="">All</option>
                 </select>
             </label>
-            <label>Lang
+            <label>語言
                 <select id="lang">
                     <option value="">All</option>
                 </select>
             </label>
-            <input id="search" type="search" placeholder="Search titles or summaries..." />
-            <label>Order
+            <input id="search" type="search" placeholder="搜尋標題或摘要..." />
+            <label>排序
                 <select id="order">
-                    <option value="newest" selected>Newest</option>
-                    <option value="oldest">Oldest</option>
-                    <option value="popular">Popular</option>
+                    <option value="newest" selected>最新</option>
+                    <option value="oldest">最舊</option>
+                    <option value="popular">熱門</option>
                 </select>
             </label>
-            <button id="applyFilters">Apply</button>
+            <button id="applyFilters">套用</button>
         </section>
         <section class="stats" id="stats"></section>
     </aside>
     <main>
         <div id="chips" class="chips"></div>
+        <div id="chipsSaved" class="chips"></div>
         <div id="articles" class="grid"></div>
         <div id="sentinel" style="height:1px"></div>
     </main>
 </div>
 </div>
 <script>
-const API_BASE = '';
-let currentUserId = null;
+var API_BASE = '';
+var currentUserId = window.currentUserId || null;
+var savedIds = window.savedIds || new Set();
 	// Theme toggle with persistence
 	(function(){
 		const pref = localStorage.getItem('theme') || 'dark';
@@ -191,10 +172,11 @@ async function createOrUseUser() {
 	const data = await res.json();
 	currentUserId = data.id;
 	document.getElementById('userInfo').textContent = `User ID: ${currentUserId}`;
+	await loadSavedIds();
 	await refreshArticles();
 }
 
-let META = { categories: [], sources: [], countries: [], languages: [] };
+var META = { categories: [], sources: [], countries: [], languages: [] };
 async function loadMeta() {
     const res = await fetch(`${API_BASE}/meta`);
     const meta = await res.json();
@@ -217,9 +199,11 @@ async function loadMeta() {
     }
 }
 
-let currentPage = 1;
-let isLoading = false;
-let reachedEnd = false;
+var currentPage = window.currentPage || 1;
+var isLoading = false;
+var reachedEnd = false;
+var viewingTrending = window.viewingTrending || false;
+var viewingSaves = window.viewingSaves || false;
 
 function renderSkeleton(count=9) {
     const container = document.getElementById('articles');
@@ -267,30 +251,43 @@ async function refreshArticles() {
             </div>
 			<p>${safeSummary}</p>
             <div class="actions">
-                <button data-like="1" data-id="${a.id}">Like</button>
-                <button data-like="0" data-id="${a.id}" class="secondary">Dislike</button>
+                <button data-like="1" data-id="${a.id}">喜歡</button>
+                <button data-like="0" data-id="${a.id}" class="secondary">不喜歡</button>
+                <button data-save="1" data-id="${a.id}" class="${(savedIds||new Set()).has(a.id) ? 'saved' : ''}">${(savedIds||new Set()).has(a.id) ? '已收藏' : '收藏'}</button>
             </div>
         `;
 		container.appendChild(div);
 	}
-	for (const btn of document.querySelectorAll('.actions button')) {
-		btn.addEventListener('click', async (e) => {
-			if (!currentUserId) return;
-			const liked = e.target.getAttribute('data-like') === '1';
-			const articleId = parseInt(e.target.getAttribute('data-id'));
-			await fetch(`${API_BASE}/feedback`, {
-				method: 'POST', headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ user_id: currentUserId, article_id: articleId, liked })
-			});
-			await refreshArticles();
-		});
-	}
+    for (const btn of document.querySelectorAll('.actions button')) {
+        btn.addEventListener('click', async (e) => {
+            if (!currentUserId) return;
+            const articleId = parseInt(e.target.getAttribute('data-id'));
+            if (e.target.hasAttribute('data-like')) {
+                const liked = e.target.getAttribute('data-like') === '1';
+                await fetch(`${API_BASE}/feedback`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: currentUserId, article_id: articleId, liked })
+                });
+                await refreshArticles();
+            }
+            if (e.target.hasAttribute('data-save')) {
+                const r = await fetch(`${API_BASE}/saves`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: currentUserId, article_id: articleId, action: 'toggle' })
+                });
+                const j = await r.json();
+                if (j.saved) { e.target.classList.add('saved'); e.target.textContent = 'Saved'; }
+                else { e.target.classList.remove('saved'); e.target.textContent = 'Save'; }
+            }
+        });
+    }
 
     // Infinite scroll sentinel
     const sentinel = document.getElementById('sentinel');
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver(async (entries) => {
             for (const e of entries) {
+                if ((viewingSaves || viewingTrending)) return;
                 if (e.isIntersecting && !reachedEnd) {
                     currentPage += 1;
                     const qs2 = new URLSearchParams(qs.toString());
@@ -349,12 +346,85 @@ async function loadStatusAndChips() {
         const s4 = document.createElement('div'); s4.className='stat'; s4.innerHTML = `<div>Top Categories</div><div>${(stats.top_categories||[]).slice(0,5).map(x=>x.category).join(', ')}</div>`; statsBox.appendChild(s4);
         const chipsEl = document.getElementById('chips');
         chipsEl.innerHTML = '';
-        (META.categories||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ document.getElementById('category').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
-        (META.countries||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ document.getElementById('country').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
+        (META.categories||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ viewingSaves=false; viewingTrending=false; document.getElementById('category').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
+        (META.countries||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ viewingSaves=false; viewingTrending=false; document.getElementById('country').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
+
+        const chipsSaved = document.getElementById('chipsSaved');
+        chipsSaved.innerHTML = '';
+        const chipSaved = document.createElement('div'); chipSaved.className='chip'; chipSaved.textContent='Only Saved';
+        chipSaved.addEventListener('click', async ()=>{ if (!currentUserId) return alert('Please Create/Use a user first'); viewingSaves=true; viewingTrending=false; await showMySaves(); });
+        const chipTrending = document.createElement('div'); chipTrending.className='chip'; chipTrending.textContent='Trending';
+        chipTrending.addEventListener('click', async ()=>{ viewingTrending=true; viewingSaves=false; await showTrending(); });
+        const chipAll = document.createElement('div'); chipAll.className='chip'; chipAll.textContent='All Articles';
+        chipAll.addEventListener('click', ()=>{ viewingSaves=false; viewingTrending=false; refreshArticles(); });
+        chipsSaved.appendChild(chipSaved); chipsSaved.appendChild(chipTrending); chipsSaved.appendChild(chipAll);
     } catch(e) { }
 }
 
 loadMeta().then(()=>{ loadStatusAndChips(); refreshArticles(); });
+
+async function loadSavedIds() {
+    if (!currentUserId) return;
+    try {
+        const res = await fetch(`${API_BASE}/saves?user_id=${currentUserId}`);
+        const arr = await res.json();
+        savedIds = new Set((arr||[]).map(a => a.id));
+    } catch (e) { savedIds = new Set(); }
+}
+
+async function showMySaves() {
+    if (!currentUserId) return alert('Please Create/Use a user first');
+    const container = document.getElementById('articles');
+    container.innerHTML = '';
+    renderSkeleton(6);
+    const res = await fetch(`${API_BASE}/saves?user_id=${currentUserId}`);
+    const articles = await res.json();
+    container.innerHTML = '';
+    for (const a of articles) {
+        const div = document.createElement('div');
+        div.className = 'article';
+        const safeSummary = (a.summary || '').replace(/<img[^>]*>/gi, '');
+        div.innerHTML = `
+            <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
+            <div class="meta">
+                <span class="badge">${a.source || ''}</span>
+                <span class="badge">${a.category || 'general'}</span>
+                <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
+            </div>
+            <p>${safeSummary}</p>
+            <div class="actions">
+                <button data-save="1" data-id="${a.id}" class="saved">Saved</button>
+            </div>
+        `;
+        container.appendChild(div);
+    }
+}
+
+document.getElementById('mySaves').addEventListener('click', showMySaves);
+
+async function showTrending() {
+    const container = document.getElementById('articles');
+    container.innerHTML = '';
+    renderSkeleton(9);
+    const res = await fetch(`${API_BASE}/trending`);
+    const articles = await res.json();
+    container.innerHTML = '';
+    for (const a of articles) {
+        const div = document.createElement('div');
+        div.className = 'article';
+        const safeSummary = (a.summary || '').replace(/<img[^>]*>/gi, '');
+        div.innerHTML = `
+            <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
+            <div class="meta">
+                <span class="badge">${a.source || ''}</span>
+                <span class="badge">${a.category || 'general'}</span>
+                <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
+            </div>
+            <p>${safeSummary}</p>
+        `;
+        container.appendChild(div);
+    }
+}
 </script>
 </body>
 </html>
