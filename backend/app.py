@@ -170,6 +170,35 @@ def create_app() -> Flask:
 		finally:
 			session.close()
 
+	@app.route("/stats_country_lang", methods=["GET"])  # counts per country and language
+	def stats_country_lang():
+		s = get_session()
+		try:
+			country_rows = (
+				s.query(Article.country, func.count(Article.id), func.max(Article.published_at))
+				.group_by(Article.country)
+				.order_by(func.count(Article.id).desc())
+				.all()
+			)
+			lang_rows = (
+				s.query(Article.lang, func.count(Article.id))
+				.group_by(Article.lang)
+				.order_by(func.count(Article.id).desc())
+				.all()
+			)
+			return jsonify({
+				"countries": [
+					{"code": c or "", "count": int(n or 0), "last_published_at": (lp.isoformat() if lp else None)}
+					for c, n, lp in country_rows
+				],
+				"languages": [
+					{"code": l or "", "count": int(n or 0)}
+					for l, n in lang_rows
+				],
+			})
+		finally:
+			s.close()
+
 	@app.route("/crawl", methods=["POST"])  # trigger a crawl cycle via Celery
 	def trigger_crawl():
 		try:

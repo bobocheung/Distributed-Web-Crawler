@@ -346,8 +346,10 @@ async function loadStatusAndChips() {
         const s4 = document.createElement('div'); s4.className='stat'; s4.innerHTML = `<div>Top Categories</div><div>${(stats.top_categories||[]).slice(0,5).map(x=>x.category).join(', ')}</div>`; statsBox.appendChild(s4);
         const chipsEl = document.getElementById('chips');
         chipsEl.innerHTML = '';
+        const zhCountry = { hk:'香港', gb:'英國', us:'美國', cn:'中國', jp:'日本', kr:'南韓', sg:'新加坡', tw:'台灣', my:'馬來西亞', th:'泰國', vn:'越南', ph:'菲律賓', id:'印尼', au:'澳洲', ca:'加拿大', de:'德國', fr:'法國', es:'西班牙', it:'意大利' };
+        const zhLang = { en:'英文', zh:'中文', ja:'日文', ko:'韓文', fr:'法文', de:'德文', es:'西文' };
         (META.categories||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ viewingSaves=false; viewingTrending=false; document.getElementById('category').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
-        (META.countries||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ viewingSaves=false; viewingTrending=false; document.getElementById('country').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
+        (META.countries||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=zhCountry[c]||c; d.title=c; d.addEventListener('click',()=>{ viewingSaves=false; viewingTrending=false; document.getElementById('country').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
 
         const chipsSaved = document.getElementById('chipsSaved');
         chipsSaved.innerHTML = '';
@@ -358,6 +360,20 @@ async function loadStatusAndChips() {
         const chipAll = document.createElement('div'); chipAll.className='chip'; chipAll.textContent='All Articles';
         chipAll.addEventListener('click', ()=>{ viewingSaves=false; viewingTrending=false; refreshArticles(); });
         chipsSaved.appendChild(chipSaved); chipsSaved.appendChild(chipTrending); chipsSaved.appendChild(chipAll);
+
+        // country/lang stats
+        try {
+            const res = await fetch(`${API_BASE}/stats_country_lang`);
+            const sdata = await res.json();
+            const statsBox = document.getElementById('stats');
+            const wrap = document.createElement('div'); wrap.className='stat';
+            const lines = [];
+            (sdata.countries||[]).slice(0,8).forEach(x=>{ lines.push(`${zhCountry[x.code]||x.code}: ${x.count}`); });
+            lines.push('——');
+            (sdata.languages||[]).slice(0,6).forEach(x=>{ lines.push(`${zhLang[x.code]||x.code}: ${x.count}`); });
+            wrap.innerHTML = `<div>各國家/語言</div><div style="white-space:pre-line">${lines.join('\n')}</div>`;
+            statsBox.appendChild(wrap);
+        } catch(e) {}
     } catch(e) { }
 }
 
