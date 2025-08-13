@@ -7,7 +7,7 @@ from flask_cors import CORS
 from sqlalchemy import select, func, case
 from sqlalchemy.exc import IntegrityError
 from .db import Base, get_engine, get_session, ensure_sqlite_columns_for_articles
-from .models import Article, User, UserInteraction
+from .models import Article, User, UserInteraction, SavedArticle
 from .recommendation import recommend_for_user, get_default_preferences, update_preferences_from_feedback, DEFAULT_COUNTRIES, DEFAULT_CATEGORIES
 from .text_utils import canonicalize_url, url_hash as make_url_hash, normalize_source, detect_lang
 try:
@@ -208,6 +208,17 @@ def create_app() -> Flask:
 			return jsonify({"status": "ok"})
 		finally:
 			session.close()
+
+	@app.route("/articles/<int:article_id>", methods=["GET"])  # article detail
+	def article_detail(article_id: int):
+		s = get_session()
+		try:
+			obj = s.get(Article, article_id)
+			if not obj:
+				return jsonify({"error": "not found"}), 404
+			return jsonify(obj.to_dict())
+		finally:
+			s.close()
 	@app.route("/articles/bulk", methods=["POST"])  # ingest articles from crawler
 	def bulk_articles():
 		payload = request.get_json(force=True) or {}
@@ -279,6 +290,78 @@ def create_app() -> Flask:
 			return jsonify({"created": created, "updated": updated})
 		finally:
 			session.close()
+
+	@app.route("/saves", methods=["GET"])  # list saved
+	def list_saves():
+		user_id = request.args.get("user_id", type=int)
+		if not user_id:
+			return jsonify([])
+		s = get_session()
+		try:
+			rows = (
+				s.query(Article)
+				.join(SavedArticle, SavedArticle.article_id == Article.id)
+				.filter(SavedArticle.user_id == user_id)
+				.order_by(Article.published_at.desc().nullslast())
+				.limit(200)
+				.all()
+			)
+			return jsonify([a.to_dict() for a in rows])
+		finally:
+			s.close()
+
+	@app.route("/saves", methods=["POST"])  # toggle save
+	def toggle_save():
+		payload = request.get_json(force=True) or {}
+		user_id = payload.get("user_id")
+		article_id = payload.get("article_id")
+		action = (payload.get("action") or "toggle").lower()
+		if not user_id or not article_id:
+			return jsonify({"error": "user_id and article_id required"}), 400
+		s = get_session()
+		try:
+			ex = (
+				s.query(SavedArticle)
+				.filter(SavedArticle.user_id == int(user_id), SavedArticle.article_id == int(article_id))
+				.one_or_none()
+			)
+			if ex and action in ("toggle", "remove"):
+				s.delete(ex)
+				s.commit()
+				return jsonify({"saved": False})
+			if not ex and action in ("toggle", "add"):
+				s.add(SavedArticle(user_id=int(user_id), article_id=int(article_id)))
+				s.commit()
+				return jsonify({"saved": True})
+			return jsonify({"saved": bool(ex)})
+		finally:
+			s.close()
+
+	@app.route("/trending", methods=["GET"])  # last 48h by likes
+	def trending():
+		s = get_session()
+		try:
+			from datetime import datetime, timedelta
+			cut = datetime.utcnow() - timedelta(hours=48)
+			likes_subq = (
+				s.query(
+					UserInteraction.article_id.label("a_id"),
+					func.sum(case((UserInteraction.liked == True, 1), else_=0)).label("likes"),
+				)
+				.filter(UserInteraction.created_at >= cut)
+				.group_by(UserInteraction.article_id)
+				.subquery()
+			)
+			rows = (
+				s.query(Article)
+				.outerjoin(likes_subq, Article.id == likes_subq.c.a_id)
+				.order_by(likes_subq.c.likes.desc().nullslast(), Article.published_at.desc().nullslast())
+				.limit(50)
+				.all()
+			)
+			return jsonify([a.to_dict() for a in rows])
+		finally:
+			s.close()
 	return app
 if __name__ == "__main__":
 	port = int(os.getenv("PORT", "5000"))

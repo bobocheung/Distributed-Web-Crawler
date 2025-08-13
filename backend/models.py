@@ -74,3 +74,15 @@ class UserInteraction(Base):
 
 	user = relationship("User", back_populates="interactions")
 	article = relationship("Article", back_populates="interactions")
+
+
+class SavedArticle(Base):
+	__tablename__ = "saved_articles"
+	__table_args__ = (
+		UniqueConstraint("user_id", "article_id", name="uq_saved_user_article"),
+	)
+
+	id: Mapped[int] = Column(Integer, primary_key=True)
+	user_id: Mapped[int] = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+	article_id: Mapped[int] = Column(Integer, ForeignKey("articles.id", ondelete="CASCADE"), nullable=False, index=True)
+	created_at: Mapped[datetime] = Column(DateTime, default=datetime.utcnow, nullable=False)
