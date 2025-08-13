@@ -9,3 +9,10 @@ beautifulsoup4==4.12.3
 numpy==2.1.0
 joblib==1.4.2
 python-dotenv==1.0.1
+celery==5.4.0
+redis==5.0.4
+psycopg2-binary==2.9.9
+alembic==1.13.2
+langid==1.1.6
+simhash==2.1.2
+gunicorn==21.2.0

@@ -4,11 +4,12 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
-from sqlalchemy import select
+from sqlalchemy import select, func, case
 from sqlalchemy.exc import IntegrityError
-from .db import Base, get_engine, get_session
+from .db import Base, get_engine, get_session, ensure_sqlite_columns_for_articles
 from .models import Article, User, UserInteraction
-from .recommendation import recommend_for_user, get_default_preferences, update_preferences_from_feedback
+from .recommendation import recommend_for_user, get_default_preferences, update_preferences_from_feedback, DEFAULT_COUNTRIES, DEFAULT_CATEGORIES
+from .text_utils import canonicalize_url, url_hash as make_url_hash, normalize_source, detect_lang
 try:
 	from ml.infer import classify as ml_classify  # type: ignore
 except Exception:  # pragma: no cover
@@ -17,10 +18,17 @@ def create_app() -> Flask:
 	app = Flask(__name__, template_folder="templates")
 	CORS(app)
 	engine = get_engine()
-	Base.metadata.create_all(bind=engine)
+	if engine.dialect.name == "sqlite":
+		Base.metadata.create_all(bind=engine)
+		ensure_sqlite_columns_for_articles()
 	@app.route("/health", methods=["GET"])  # simple health check
 	def health():
 		return jsonify({"status": "ok"})
+
+	# quiet down favicon 404 in browser devtools
+	@app.route("/favicon.ico")
+	def favicon():
+		return ("", 204)
 	@app.route("/", methods=["GET"])  # minimal UI to verify setup quickly
 	def index():
 		return render_template("index.html")
@@ -54,6 +62,7 @@ def create_app() -> Flask:
 		limit = request.args.get("limit", default=50, type=int)
 		category = request.args.get("category")
 		source = request.args.get("source")
+		country = request.args.get("country")
 		order = request.args.get("order", default="newest")  # newest|oldest
 		q = request.args.get("q")
 		page = request.args.get("page", default=1, type=int)
@@ -71,10 +80,29 @@ def create_app() -> Flask:
 					query = query.filter(Article.category == category)
 				if source:
 					query = query.filter(Article.source == source)
+				if country:
+					query = query.filter(Article.country == country)
+				lang = request.args.get("lang")
+				if lang:
+					query = query.filter(Article.lang == lang)
 				if q:
 					pattern = f"%{q}%"
 					query = query.filter((Article.title.ilike(pattern)) | (Article.summary.ilike(pattern)))
-				if order == "oldest":
+				if order == "popular":
+					# order by like counts (desc), then most recent
+					likes_subq = (
+						session.query(
+							UserInteraction.article_id.label("a_id"),
+							func.sum(case((UserInteraction.liked == True, 1), else_=0)).label("likes"),
+						)
+						.group_by(UserInteraction.article_id)
+						.subquery()
+					)
+					query = (
+						query.outerjoin(likes_subq, Article.id == likes_subq.c.a_id)
+						.order_by(likes_subq.c.likes.desc().nullslast(), Article.published_at.desc().nullslast())
+					)
+				elif order == "oldest":
 					query = query.order_by(Article.published_at.asc().nullslast())
 				else:
 					query = query.order_by(Article.published_at.desc().nullslast())
@@ -86,15 +114,70 @@ def create_app() -> Flask:
 		finally:
 			session.close()
 
-	@app.route("/meta", methods=["GET"])  # distinct sources and categories for UI filters
+	@app.route("/meta", methods=["GET"])  # distinct sources, categories, countries for UI filters
 	def meta():
 		session = get_session()
 		try:
 			sources = sorted({s for (s,) in session.query(Article.source).filter(Article.source.isnot(None)).distinct().all()})
-			categories = sorted({c for (c,) in session.query(Article.category).filter(Article.category.isnot(None)).distinct().all()})
-			return jsonify({"sources": sources, "categories": categories})
+			categories_db = sorted({c for (c,) in session.query(Article.category).filter(Article.category.isnot(None)).distinct().all()})
+			countries_db = sorted({c for (c,) in session.query(Article.country).filter(Article.country.isnot(None)).distinct().all()})
+			langs_db = sorted({l for (l,) in session.query(Article.lang).filter(Article.lang.isnot(None)).distinct().all()})
+			# ensure we expose at least our defaults
+			categories = sorted(set(categories_db).union(DEFAULT_CATEGORIES))
+			countries = sorted(set(countries_db).union(DEFAULT_COUNTRIES))
+			return jsonify({"sources": sources, "categories": categories, "countries": countries, "languages": langs_db})
 		finally:
 			session.close()
+
+	@app.route("/status", methods=["GET"])  # simple stats for UI
+	def status():
+		session = get_session()
+		try:
+			total = session.query(func.count(Article.id)).scalar() or 0
+			last_pub = session.query(func.max(Article.published_at)).scalar()
+			return jsonify({
+				"total_articles": int(total),
+				"last_published_at": last_pub.isoformat() if last_pub else None,
+			})
+		finally:
+			session.close()
+
+	@app.route("/stats", methods=["GET"])  # top sources/categories (7 days)
+	def stats():
+		session = get_session()
+		try:
+			# top sources
+			source_rows = (
+				session.query(Article.source, func.count(Article.id))
+				.filter(Article.source.isnot(None))
+				.group_by(Article.source)
+				.order_by(func.count(Article.id).desc())
+				.limit(10)
+				.all()
+			)
+			cat_rows = (
+				session.query(Article.category, func.count(Article.id))
+				.filter(Article.category.isnot(None))
+				.group_by(Article.category)
+				.order_by(func.count(Article.id).desc())
+				.limit(10)
+				.all()
+			)
+			return jsonify({
+				"top_sources": [{"source": s or "", "count": int(c)} for s, c in source_rows],
+				"top_categories": [{"category": s or "", "count": int(c)} for s, c in cat_rows],
+			})
+		finally:
+			session.close()
+
+	@app.route("/crawl", methods=["POST"])  # trigger a crawl cycle via Celery
+	def trigger_crawl():
+		try:
+			from tasks.schedule import schedule_feeds  # lazy import to avoid overhead
+			schedule_feeds.delay()
+			return jsonify({"enqueued": True})
+		except Exception as e:
+			return jsonify({"enqueued": False, "error": str(e)}), 500
 	@app.route("/feedback", methods=["POST"])  # record like/dislike and update prefs
 	def feedback():
 		payload = request.get_json(force=True) or {}
@@ -150,6 +233,12 @@ def create_app() -> Flask:
 						published_at = datetime.fromisoformat(published_at_raw.replace("Z", "+00:00")).replace(tzinfo=None)
 					except Exception:
 						published_at = None
+				# extended fields
+				url_canonical = canonicalize_url(url) if url else url
+				url_hash_val = make_url_hash(url_canonical) if url_canonical else None
+				source_norm = normalize_source(source)
+				lang = (it.get("lang") or "").strip() or (detect_lang(summary) if summary else None)
+
 				article = session.execute(select(Article).where(Article.url == url)).scalars().first()
 				if article:
 					# Update minimal fields
@@ -159,6 +248,11 @@ def create_app() -> Flask:
 					article.published_at = published_at or article.published_at
 					if not article.category:
 						article.category = category
+					article.country = (it.get("country") or None) or article.country
+					article.url_canonical = url_canonical or article.url_canonical
+					article.url_hash = url_hash_val or article.url_hash
+					article.source_norm = source_norm or article.source_norm
+					article.lang = lang or article.lang
 					updated += 1
 				else:
 					if category is None and ml_classify is not None:
@@ -172,7 +266,12 @@ def create_app() -> Flask:
 						summary=summary,
 						source=source,
 						category=category or "general",
+						country=it.get("country") or None,
 						published_at=published_at,
+						url_canonical=url_canonical,
+						url_hash=url_hash_val,
+						source_norm=source_norm,
+						lang=lang,
 					)
 					session.add(article)
 					created += 1

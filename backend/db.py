@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 
@@ -32,3 +32,28 @@ def get_engine():
 
 def get_session():
 	return SessionLocal()
+
+
+def ensure_sqlite_column(table_name: str, column_name: str, column_ddl: str) -> None:
+	"""Add a column if missing (SQLite only). column_ddl excludes the column name.
+	Example: ensure_sqlite_column('articles', 'country', 'VARCHAR(32)')
+	"""
+	if not DATABASE_URL.startswith("sqlite"):
+		return
+	with _engine.connect() as conn:
+		rows = conn.execute(text(f"PRAGMA table_info({table_name})"))
+		existing = {r[1] for r in rows}
+		if column_name not in existing:
+			conn.execute(text(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_ddl}"))
+			conn.commit()
+
+def ensure_sqlite_columns_for_articles():
+	try:
+		ensure_sqlite_column('articles', 'country', 'VARCHAR(32)')
+		ensure_sqlite_column('articles', 'url_canonical', 'VARCHAR(1024)')
+		ensure_sqlite_column('articles', 'url_hash', 'VARCHAR(64)')
+		ensure_sqlite_column('articles', 'content', 'TEXT')
+		ensure_sqlite_column('articles', 'source_norm', 'VARCHAR(128)')
+		ensure_sqlite_column('articles', 'lang', 'VARCHAR(8)')
+	except Exception:
+		pass

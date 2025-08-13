@@ -29,13 +29,35 @@ def _serialize_preferences(prefs: Dict[str, float]) -> str:
 	return "|".join(f"{k}:{v:.4f}" for k, v in prefs.items())
 
 
+# Expanded default taxonomy (20+ categories)
 DEFAULT_CATEGORIES = [
-	"general",
-	"world",
-	"business",
-	"technology",
-	"sports",
-	"entertainment",
+    "general",
+    "world",
+    "business",
+    "technology",
+    "sports",
+    "entertainment",
+    "politics",
+    "economy",
+    "finance",
+    "markets",
+    "fashion",
+    "culture",
+    "lifestyle",
+    "health",
+    "science",
+    "travel",
+    "food",
+    "education",
+    "environment",
+    "opinion",
+    "local",
+]
+
+# Countries to show in filters even before data exists (20)
+DEFAULT_COUNTRIES = [
+    "us","gb","hk","au","ca","de","fr","it","es","jp",
+    "kr","cn","in","sg","tw","my","th","vn","ph","id",
 ]
 
 
@@ -70,7 +92,19 @@ def score_article_for_user(article: Article, user: User) -> float:
 		age_hours = 1000.0
 	recency_boost = max(0.1, 2.0 - age_hours / 24.0)
 
-	return base * recency_boost
+	# Popularity boost (簡化版): likes 數 + 來源/類別權重可擴展
+	try:
+		like_count = sum(1 for it in article.interactions if it.liked)
+	except Exception:
+		like_count = 0
+	popularity_boost = 1.0 + min(1.0, like_count / 10.0)
+
+	# 多樣性控制（簡化）：對過度偏好的類別做輕微抑制
+	diversity_penalty = 1.0
+	if base > 1.5:
+		diversity_penalty = 0.95
+
+	return base * recency_boost * popularity_boost * diversity_penalty
 
 
 def recommend_for_user(session: Session, user: User, limit: int = 50) -> List[Article]:

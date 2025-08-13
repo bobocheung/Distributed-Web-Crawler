@@ -9,9 +9,15 @@
             --bg: #0b0c10; --card: #121318; --text: #e5e7eb; --muted: #9aa0a6;
             --brand: #3b82f6; --brand-2: #22c55e; --border: #1f2937;
         }
+		/* Light theme variables */
+		[data-theme="light"] {
+			--bg: #f6f7fb; --card: #ffffff; --text: #111827; --muted: #6b7280;
+			--brand: #2563eb; --brand-2: #16a34a; --border: #e5e7eb;
+		}
         * { box-sizing: border-box; }
-        body { background: linear-gradient(180deg, #0b0c10 0%, #0f1116 100%); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
-        .container { max-width: 1100px; padding: 24px; margin: 0 auto; }
+		body { background: linear-gradient(180deg, #0b0c10 0%, #0f1116 100%); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+		body[data-theme="light"] { background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%); }
+        .container { max-width: 1200px; padding: 24px; margin: 0 auto; }
         header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
         h1 { font-size: 20px; margin: 0 12px 0 0; color: #fff; }
         input, button, select { padding: 10px 12px; font-size: 14px; border-radius: 10px; border: 1px solid var(--border); background: #0f131a; color: var(--text); }
@@ -19,16 +25,39 @@
         button.secondary { background: #1f2937; }
         button:hover { opacity: .92; }
         button:active { transform: translateY(1px); }
-        .toolbar { background: #0f131a; border: 1px solid var(--border); border-radius: 14px; padding: 12px; display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+        /* layout */
+        .layout { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 1000px) { .layout { grid-template-columns: 280px 1fr; } }
+        .toolbar { background: #0f131a; border: 1px solid var(--border); border-radius: 14px; padding: 12px; display: flex; gap: 10px; flex-wrap: wrap; position: sticky; top: 12px; z-index: 20; backdrop-filter: saturate(160%) blur(6px); }
+		[data-theme="light"] .toolbar { background: rgba(255,255,255,0.85); }
         .toolbar input[type="search"] { min-width: 240px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-        .article { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+        .article { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; transition: box-shadow .2s, transform .1s, border-color .2s; }
+        .article:hover { box-shadow: 0 8px 20px rgba(0,0,0,.35); border-color: #2a3342; transform: translateY(-2px); }
         .article h3 { margin: 0 0 6px; font-size: 16px; }
         .meta { color: var(--muted); font-size: 12px; margin-top: 2px; display:flex; gap:6px; align-items:center; }
         .badge { border: 1px solid var(--border); background: #0c1016; padding: 2px 8px; border-radius: 999px; font-size: 11px; color: var(--muted); }
+		[data-theme="light"] .badge { background: #f3f4f6; }
         .actions { margin-top: 8px; display: flex; gap: 8px; }
         a { color: #93c5fd; text-decoration: none; }
         a:hover { text-decoration: underline; }
+		/* Images from summaries: keep tidy */
+		.article img { max-width: 100%; height: auto; max-height: 220px; object-fit: cover; border-radius: 12px; margin-top: 8px; display: block; }
+        .meta img.logo { width: 16px; height: 16px; border-radius: 4px; display: inline-block; }
+
+        /* skeleton */
+        .skeleton { background: linear-gradient(90deg, #1a1e27 25%, #222838 37%, #1a1e27 63%); background-size: 400% 100%; animation: shimmer 1.2s ease-in-out infinite; border-radius: 12px; }
+        .skel-card { height: 160px; border: 1px solid var(--border); }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        /* chips */
+        .chips { display:flex; flex-wrap: wrap; gap:8px; margin: 8px 0 12px; }
+        .chip { padding:6px 10px; border:1px solid var(--border); background:#0f131a; color:var(--text); border-radius:999px; font-size:12px; cursor:pointer; }
+        .chip.active { background: var(--brand); color:#fff; border-color: transparent; }
+
+        /* stats */
+        .stats { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:12px; margin:12px 0; }
+        .stat { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:12px; font-size:13px; }
     </style>
 </head>
 <body>
@@ -39,9 +68,11 @@
     <button id="createUser">Create / Use</button>
     <span id="userInfo" class="badge"></span>
     <button id="refresh" class="secondary">Refresh</button>
+    <button id="themeToggle" class="secondary" title="Toggle light/dark">Theme</button>
+    <button id="densityToggle" class="secondary" title="Toggle density">Density</button>
 </header>
 
-<section class="toolbar">
+<section class="toolbar" style="margin-bottom:18px;">
     <label>Category
         <select id="category">
             <option value="">All</option>
@@ -52,20 +83,103 @@
             <option value="">All</option>
         </select>
     </label>
+    <label>Country
+        <select id="country">
+            <option value="">All</option>
+        </select>
+    </label>
+    <label>Lang
+        <select id="lang">
+            <option value="">All</option>
+        </select>
+    </label>
     <input id="search" type="search" placeholder="Search titles or summaries..." />
     <label>Order
         <select id="order">
             <option value="newest" selected>Newest</option>
             <option value="oldest">Oldest</option>
+                    <option value="popular">Popular</option>
         </select>
     </label>
     <button id="applyFilters">Apply</button>
 </section>
-<div id="articles" class="grid"></div>
+<div class="layout">
+    <aside>
+        <section class="toolbar">
+            <label>Category
+                <select id="category">
+                    <option value="">All</option>
+                </select>
+            </label>
+            <label>Source
+                <select id="source">
+                    <option value="">All</option>
+                </select>
+            </label>
+            <label>Country
+                <select id="country">
+                    <option value="">All</option>
+                </select>
+            </label>
+            <label>Lang
+                <select id="lang">
+                    <option value="">All</option>
+                </select>
+            </label>
+            <input id="search" type="search" placeholder="Search titles or summaries..." />
+            <label>Order
+                <select id="order">
+                    <option value="newest" selected>Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="popular">Popular</option>
+                </select>
+            </label>
+            <button id="applyFilters">Apply</button>
+        </section>
+        <section class="stats" id="stats"></section>
+    </aside>
+    <main>
+        <div id="chips" class="chips"></div>
+        <div id="articles" class="grid"></div>
+        <div id="sentinel" style="height:1px"></div>
+    </main>
+</div>
 </div>
 <script>
 const API_BASE = '';
 let currentUserId = null;
+	// Theme toggle with persistence
+	(function(){
+		const pref = localStorage.getItem('theme') || 'dark';
+		if (pref === 'light') document.body.dataset.theme = 'light';
+		document.getElementById('themeToggle').addEventListener('click', () => {
+			const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+			document.body.dataset.theme = next === 'light' ? 'light' : '';
+			localStorage.setItem('theme', next);
+		});
+	})();
+
+	function logoForSource(src) {
+		if (!src) return '';
+		const map = {
+			'BBC Technology': 'https://www.bbc.com/favicon.ico',
+			'BBC World': 'https://www.bbc.com/favicon.ico',
+			'NYTimes Technology': 'https://www.nytimes.com/favicon.ico',
+			'NYTimes World': 'https://www.nytimes.com/favicon.ico',
+			'The Guardian World': 'https://www.theguardian.com/favicon.ico',
+			'The Guardian Technology': 'https://www.theguardian.com/favicon.ico',
+			'Ars Technica': 'https://arstechnica.com/favicon.ico',
+			'Al Jazeera': 'https://www.aljazeera.com/favicon.ico',
+			'SCMP Hong Kong': 'https://www.scmp.com/favicon.ico',
+			'Hong Kong Free Press': 'https://hongkongfp.com/favicon.ico',
+			'明報 即時': 'https://news.mingpao.com/favicon.ico',
+			'The Standard 即時': 'https://www.thestandard.com.hk/favicon.ico',
+			'Now News 本地': 'https://news.now.com/favicon.ico',
+			'RTHK 即時本地': 'https://rthk.hk/favicon.ico',
+			'HK01': 'https://www.hk01.com/favicon.ico'
+		};
+		return map[src] || '';
+	}
 
 async function createOrUseUser() {
 	const email = document.getElementById('email').value.trim();
@@ -80,31 +194,58 @@ async function createOrUseUser() {
 	await refreshArticles();
 }
 
+let META = { categories: [], sources: [], countries: [], languages: [] };
 async function loadMeta() {
     const res = await fetch(`${API_BASE}/meta`);
     const meta = await res.json();
+    META = meta;
     const cat = document.getElementById('category');
     const src = document.getElementById('source');
+    const cty = document.getElementById('country');
+    const lng = document.getElementById('lang');
     for (const c of meta.categories) {
         const o = document.createElement('option'); o.value = c; o.textContent = c; cat.appendChild(o);
     }
     for (const s of meta.sources) {
         const o = document.createElement('option'); o.value = s; o.textContent = s; src.appendChild(o);
     }
+    for (const c of meta.countries) {
+        const o = document.createElement('option'); o.value = c; o.textContent = c; cty.appendChild(o);
+    }
+    for (const l of (meta.languages || [])) {
+        const o = document.createElement('option'); o.value = l; o.textContent = l; lng.appendChild(o);
+    }
 }
 
 let currentPage = 1;
+let isLoading = false;
+let reachedEnd = false;
+
+function renderSkeleton(count=9) {
+    const container = document.getElementById('articles');
+    container.innerHTML = '';
+    for (let i=0;i<count;i++) {
+        const s = document.createElement('div');
+        s.className = 'skeleton skel-card';
+        container.appendChild(s);
+    }
+}
 
 async function refreshArticles() {
+    if (isLoading) return; isLoading = true; reachedEnd = false; currentPage = 1; renderSkeleton();
     const qs = new URLSearchParams();
     if (currentUserId) qs.set('user_id', String(currentUserId));
     const category = document.getElementById('category').value;
     const source = document.getElementById('source').value;
     const order = document.getElementById('order').value;
+    const country = document.getElementById('country').value;
     const q = document.getElementById('search').value.trim();
+    const lang = document.getElementById('lang').value;
     if (category) qs.set('category', category);
     if (source) qs.set('source', source);
+    if (country) qs.set('country', country);
     if (order) qs.set('order', order);
+    if (lang) qs.set('lang', lang);
     if (q) qs.set('q', q);
     qs.set('page', String(currentPage));
     qs.set('page_size', '30');
@@ -115,14 +256,16 @@ async function refreshArticles() {
 	for (const a of articles) {
         const div = document.createElement('div');
         div.className = 'article';
-        div.innerHTML = `
+		const safeSummary = (a.summary || '').replace(/<img[^>]*>/gi, '');
+		div.innerHTML = `
             <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
             <div class="meta">
+				${logoForSource(a.source) ? `<img class="logo" src="${logoForSource(a.source)}" alt=""/>` : ''}
                 <span class="badge">${a.source || ''}</span>
                 <span class="badge">${a.category || 'general'}</span>
                 <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
             </div>
-            <p>${a.summary || ''}</p>
+			<p>${safeSummary}</p>
             <div class="actions">
                 <button data-like="1" data-id="${a.id}">Like</button>
                 <button data-like="0" data-id="${a.id}" class="secondary">Dislike</button>
@@ -143,40 +286,38 @@ async function refreshArticles() {
 		});
 	}
 
-    // Simple "Load more" button
-    const more = document.createElement('div');
-    more.style.textAlign = 'center';
-    more.style.margin = '12px 0 30px';
-    const moreBtn = document.createElement('button');
-    moreBtn.textContent = 'Load more';
-    moreBtn.className = 'secondary';
-    moreBtn.addEventListener('click', async () => {
-        currentPage += 1;
-        const qs2 = new URLSearchParams(qs.toString());
-        qs2.set('page', String(currentPage));
-        const res2 = await fetch(`${API_BASE}/articles?${qs2.toString()}`);
-        const moreArticles = await res2.json();
-        for (const a of moreArticles) {
-            const div2 = document.createElement('div');
-            div2.className = 'article';
-            div2.innerHTML = `
-                <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
-                <div class="meta">
-                    <span class="badge">${a.source || ''}</span>
-                    <span class="badge">${a.category || 'general'}</span>
-                    <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
-                </div>
-                <p>${a.summary || ''}</p>
-                <div class="actions">
-                    <button data-like="1" data-id="${a.id}">Like</button>
-                    <button data-like="0" data-id="${a.id}" class="secondary">Dislike</button>
-                </div>
-            `;
-            container.appendChild(div2);
-        }
-    });
-    more.appendChild(moreBtn);
-    container.appendChild(more);
+    // Infinite scroll sentinel
+    const sentinel = document.getElementById('sentinel');
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(async (entries) => {
+            for (const e of entries) {
+                if (e.isIntersecting && !reachedEnd) {
+                    currentPage += 1;
+                    const qs2 = new URLSearchParams(qs.toString());
+                    qs2.set('page', String(currentPage));
+                    const res2 = await fetch(`${API_BASE}/articles?${qs2.toString()}`);
+                    const moreArticles = await res2.json();
+                    if (!Array.isArray(moreArticles) || moreArticles.length === 0) { reachedEnd = true; return; }
+                    for (const a of moreArticles) {
+                        const div2 = document.createElement('div');
+                        div2.className = 'article';
+                        div2.innerHTML = `
+                            <a href="${a.url}" target="_blank"><h3>${a.title}</h3></a>
+                            <div class="meta">
+                                <span class="badge">${a.source || ''}</span>
+                                <span class="badge">${a.category || 'general'}</span>
+                                <span>${a.published_at ? new Date(a.published_at).toLocaleString() : ''}</span>
+                            </div>
+                            <p>${(a.summary || '').replace(/<img[^>]*>/gi, '')}</p>
+                        `;
+                        container.appendChild(div2);
+                    }
+                }
+            }
+        }, { rootMargin: '600px 0px' });
+        io.observe(sentinel);
+    }
+    isLoading = false;
 }
 
 document.getElementById('createUser').addEventListener('click', createOrUseUser);
@@ -184,7 +325,36 @@ document.getElementById('createUser').addEventListener('click', createOrUseUser)
 document.getElementById('refresh').addEventListener('click', refreshArticles);
 document.getElementById('applyFilters').addEventListener('click', () => { currentPage = 1; refreshArticles(); });
 
-loadMeta().then(refreshArticles);
+document.getElementById('densityToggle').addEventListener('click', () => {
+    const d = document.body.dataset.density === 'compact' ? '' : 'compact';
+    document.body.dataset.density = d;
+    localStorage.setItem('density', d || 'comfortable');
+});
+(function(){ const d = localStorage.getItem('density'); if (d === 'compact') document.body.dataset.density = 'compact'; })();
+
+// status and chips
+async function loadStatusAndChips() {
+    try {
+        const [stRes, statRes] = await Promise.all([
+            fetch(`${API_BASE}/status`),
+            fetch(`${API_BASE}/stats`),
+        ]);
+        const st = await stRes.json();
+        const stats = await statRes.json();
+        const statsBox = document.getElementById('stats');
+        statsBox.innerHTML = '';
+        const s1 = document.createElement('div'); s1.className='stat'; s1.innerHTML = `<div>Total Articles</div><div style="font-size:20px;font-weight:600;">${(st.total_articles||0).toLocaleString()}</div>`; statsBox.appendChild(s1);
+        const s2 = document.createElement('div'); s2.className='stat'; s2.innerHTML = `<div>Last Published</div><div>${st.last_published_at ? new Date(st.last_published_at).toLocaleString() : '-'}</div>`; statsBox.appendChild(s2);
+        const s3 = document.createElement('div'); s3.className='stat'; s3.innerHTML = `<div>Top Sources</div><div>${(stats.top_sources||[]).slice(0,5).map(x=>x.source).join(', ')}</div>`; statsBox.appendChild(s3);
+        const s4 = document.createElement('div'); s4.className='stat'; s4.innerHTML = `<div>Top Categories</div><div>${(stats.top_categories||[]).slice(0,5).map(x=>x.category).join(', ')}</div>`; statsBox.appendChild(s4);
+        const chipsEl = document.getElementById('chips');
+        chipsEl.innerHTML = '';
+        (META.categories||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ document.getElementById('category').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
+        (META.countries||[]).slice(0,8).forEach(c => { const d=document.createElement('div'); d.className='chip'; d.textContent=c; d.addEventListener('click',()=>{ document.getElementById('country').value=c; refreshArticles(); }); chipsEl.appendChild(d); });
+    } catch(e) { }
+}
+
+loadMeta().then(()=>{ loadStatusAndChips(); refreshArticles(); });
 </script>
 </body>
 </html>
