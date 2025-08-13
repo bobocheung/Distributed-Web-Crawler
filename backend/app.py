@@ -8,8 +8,8 @@ from sqlalchemy import select, func, case
 from sqlalchemy.exc import IntegrityError
 from .db import Base, get_engine, get_session, ensure_sqlite_columns_for_articles
 from .models import Article, User, UserInteraction, SavedArticle
-from .recommendation import recommend_for_user, get_default_preferences, update_preferences_from_feedback, DEFAULT_COUNTRIES, DEFAULT_CATEGORIES
-from .text_utils import canonicalize_url, url_hash as make_url_hash, normalize_source, detect_lang
+from .recommendation import recommend_for_user, get_default_preferences, update_preferences_from_feedback, DEFAULT_COUNTRIES, DEFAULT_CATEGORIES, CATEGORY_DISPLAY
+from .text_utils import canonicalize_url, url_hash as make_url_hash, normalize_source, detect_lang, infer_country_from_url
 try:
 	from ml.infer import classify as ml_classify  # type: ignore
 except Exception:  # pragma: no cover
@@ -77,7 +77,11 @@ def create_app() -> Flask:
 			else:
 				query = session.query(Article)
 				if category:
-					query = query.filter(Article.category == category)
+					# match either single category or multi-categories field
+					query = query.filter(
+						(Article.category == category) |
+						(Article.categories.like(f"%,{category},%"))
+					)
 				if source:
 					query = query.filter(Article.source == source)
 				if country:
@@ -125,7 +129,7 @@ def create_app() -> Flask:
 			# ensure we expose at least our defaults
 			categories = sorted(set(categories_db).union(DEFAULT_CATEGORIES))
 			countries = sorted(set(countries_db).union(DEFAULT_COUNTRIES))
-			return jsonify({"sources": sources, "categories": categories, "countries": countries, "languages": langs_db})
+			return jsonify({"sources": sources, "categories": categories, "countries": countries, "languages": langs_db, "category_display": CATEGORY_DISPLAY})
 		finally:
 			session.close()
 
@@ -196,6 +200,93 @@ def create_app() -> Flask:
 					for l, n in lang_rows
 				],
 			})
+		finally:
+			s.close()
+
+	@app.route("/sources_country_map", methods=["GET"])
+	def sources_country_map():
+		s = get_session()
+		try:
+			rows = (
+				s.query(Article.source_norm, Article.source, Article.country, func.count(Article.id))
+				.group_by(Article.source_norm, Article.source, Article.country)
+				.all()
+			)
+			acc: Dict[str, Dict[str, Any]] = {}
+			for sn, sname, c, n in rows:
+				key = (sn or sname or "").strip() or "unknown"
+				item = acc.setdefault(key, {"source": key, "best_country": None, "counts": {}})
+				item["counts"][c or ""] = int(n)
+			# pick majority country
+			for k, v in acc.items():
+				best = sorted(v["counts"].items(), key=lambda x: x[1], reverse=True)
+				v["best_country"] = best[0][0] if best else ""
+			return jsonify(list(acc.values()))
+		finally:
+			s.close()
+
+	@app.route("/language_accuracy", methods=["GET"])
+	def language_accuracy():
+		s = get_session()
+		try:
+			total = s.query(func.count(Article.id)).scalar() or 0
+			per = s.query(Article.lang, func.count(Article.id)).group_by(Article.lang).all()
+			return jsonify({
+				"total": int(total),
+				"by_lang": [{"lang": l or "", "count": int(n)} for l, n in per],
+			})
+		finally:
+			s.close()
+
+	@app.route("/crawl_stats", methods=["GET"])  # recent counts (24h/48h) by source/country/lang
+	def crawl_stats():
+		from datetime import datetime, timedelta
+		s = get_session()
+		try:
+			now = datetime.utcnow()
+			cut24 = now - timedelta(hours=24)
+			cut48 = now - timedelta(hours=48)
+			def agg(cut):
+				src = (
+					s.query(Article.source, func.count(Article.id))
+					.filter(Article.created_at >= cut)
+					.group_by(Article.source)
+					.all()
+				)
+				cty = (
+					s.query(Article.country, func.count(Article.id))
+					.filter(Article.created_at >= cut)
+					.group_by(Article.country)
+					.all()
+				)
+				lng = (
+					s.query(Article.lang, func.count(Article.id))
+					.filter(Article.created_at >= cut)
+					.group_by(Article.lang)
+					.all()
+				)
+				return {
+					"by_source": [{"source": s or "", "count": int(n)} for s, n in src],
+					"by_country": [{"country": c or "", "count": int(n)} for c, n in cty],
+					"by_lang": [{"lang": l or "", "count": int(n)} for l, n in lng],
+				}
+			return jsonify({"last24h": agg(cut24), "last48h": agg(cut48)})
+		finally:
+			s.close()
+
+	@app.route("/admin/fix_countries", methods=["POST"])  # one-off: fill missing countries by URL inference
+	def admin_fix_countries():
+		s = get_session()
+		try:
+			rows = s.query(Article).filter((Article.country.is_(None)) | (Article.country == "")).all()
+			fixed = 0
+			for a in rows:
+				inf = infer_country_from_url(a.url)
+				if inf:
+					a.country = inf
+					fixed += 1
+			s.commit()
+			return jsonify({"fixed": fixed})
 		finally:
 			s.close()
 
@@ -273,11 +364,38 @@ def create_app() -> Flask:
 						published_at = datetime.fromisoformat(published_at_raw.replace("Z", "+00:00")).replace(tzinfo=None)
 					except Exception:
 						published_at = None
-				# extended fields
+				# extended fields + multi-categories
 				url_canonical = canonicalize_url(url) if url else url
 				url_hash_val = make_url_hash(url_canonical) if url_canonical else None
 				source_norm = normalize_source(source)
 				lang = (it.get("lang") or "").strip() or (detect_lang(summary) if summary else None)
+				# derive multi categories by simple rules
+				cats = []
+				text_for_clf = f"{title}\n{summary or ''}".lower()
+				def add_cat(key):
+					if key and key not in cats:
+						cats.append(key)
+				# rules
+				if any(k in text_for_clf for k in [" ai ","人工智能","機器學習","半導體","晶片","chip","software","app","科技","tech"]):
+					add_cat("technology")
+				if any(k in text_for_clf for k in ["經濟","inflation","cpi","gdp","經濟成長","economic"]):
+					add_cat("economy")
+				if any(k in text_for_clf for k in ["finance","bank","利率","hibor","股市","market","證券"]):
+					add_cat("finance"); add_cat("economy")
+				if any(k in text_for_clf for k in ["policy","regulation","監管","立法","政府","部長","部會"]):
+					add_cat("politics")
+				if any(k in text_for_clf for k in ["health","covid","醫療","醫院","健康"]):
+					add_cat("health")
+				if any(k in text_for_clf for k in ["sport","比賽","球隊","球員","world cup","奧運"]):
+					add_cat("sports")
+				if any(k in text_for_clf for k in ["entertainment","電影","影視","音樂","明星"]):
+					add_cat("entertainment")
+				if any(k in text_for_clf for k in ["climate","環境","污染","綠色","減碳"]):
+					add_cat("environment")
+				# fallbacks
+				if not cats:
+					cats = [category or "general"]
+				categories_str = "," + ",".join(sorted(set(cats))) + ","
 
 				article = session.execute(select(Article).where(Article.url == url)).scalars().first()
 				if article:
@@ -288,7 +406,34 @@ def create_app() -> Flask:
 					article.published_at = published_at or article.published_at
 					if not article.category:
 						article.category = category
-					article.country = (it.get("country") or None) or article.country
+					# update multi-categories
+					text_for_clf_upd = f"{title}\n{summary or ''}".lower()
+					cats_upd = []
+					def add_cat_upd(k):
+						if k and k not in cats_upd:
+							cats_upd.append(k)
+					if any(k in text_for_clf_upd for k in [" ai ","人工智能","機器學習","半導體","晶片","chip","software","app","科技","tech"]):
+						add_cat_upd("technology")
+					if any(k in text_for_clf_upd for k in ["經濟","inflation","cpi","gdp","經濟成長","economic"]):
+						add_cat_upd("economy")
+					if any(k in text_for_clf_upd for k in ["finance","bank","利率","hibor","股市","market","證券"]):
+						add_cat_upd("finance")
+					if any(k in text_for_clf_upd for k in ["policy","regulation","監管","立法","政府","部長","部會"]):
+						add_cat_upd("politics")
+					if any(k in text_for_clf_upd for k in ["health","covid","醫療","醫院","健康"]):
+						add_cat_upd("health")
+					if any(k in text_for_clf_upd for k in ["sport","比賽","球隊","球員","world cup","奧運"]):
+						add_cat_upd("sports")
+					if any(k in text_for_clf_upd for k in ["entertainment","電影","影視","音樂","明星"]):
+						add_cat_upd("entertainment")
+					if any(k in text_for_clf_upd for k in ["climate","環境","污染","綠色","減碳"]):
+						add_cat_upd("environment")
+					if cats_upd:
+						article.categories = "," + ",".join(sorted(set(cats_upd))) + ","
+					# prefer incoming, fallback to URL inference, then keep existing
+					incoming_country2 = (it.get("country") or None)
+					inferred_country2 = infer_country_from_url(url)
+					article.country = incoming_country2 or inferred_country2 or article.country
 					article.url_canonical = url_canonical or article.url_canonical
 					article.url_hash = url_hash_val or article.url_hash
 					article.source_norm = source_norm or article.source_norm
@@ -300,19 +445,20 @@ def create_app() -> Flask:
 							category = ml_classify(f"{title}\n{summary or ''}") or "general"
 						except Exception:
 							category = "general"
-					article = Article(
-						title=title,
-						url=url,
-						summary=summary,
-						source=source,
-						category=category or "general",
-						country=it.get("country") or None,
-						published_at=published_at,
-						url_canonical=url_canonical,
-						url_hash=url_hash_val,
-						source_norm=source_norm,
-						lang=lang,
-					)
+						article = Article(
+							title=title,
+							url=url,
+							summary=summary,
+							source=source,
+							category=category or "general",
+							categories=categories_str,
+							country=(it.get("country") or infer_country_from_url(url)),
+							published_at=published_at,
+							url_canonical=url_canonical,
+							url_hash=url_hash_val,
+							source_norm=source_norm,
+							lang=lang,
+						)
 					session.add(article)
 					created += 1
 			session.commit()

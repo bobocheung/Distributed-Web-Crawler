@@ -87,22 +87,22 @@
         <section class="toolbar">
             <label>分類
                 <select id="category">
-                    <option value="">All</option>
+                    <option value="">全部</option>
                 </select>
             </label>
             <label>來源
                 <select id="source">
-                    <option value="">All</option>
+                    <option value="">全部</option>
                 </select>
             </label>
             <label>國家
                 <select id="country">
-                    <option value="">All</option>
+                    <option value="">全部</option>
                 </select>
             </label>
             <label>語言
                 <select id="lang">
-                    <option value="">All</option>
+                    <option value="">全部</option>
                 </select>
             </label>
             <input id="search" type="search" placeholder="搜尋標題或摘要..." />
@@ -185,17 +185,20 @@ async function loadMeta() {
     const src = document.getElementById('source');
     const cty = document.getElementById('country');
     const lng = document.getElementById('lang');
+    const catDisp = meta.category_display || {};
     for (const c of meta.categories) {
-        const o = document.createElement('option'); o.value = c; o.textContent = c; cat.appendChild(o);
+        const o = document.createElement('option'); o.value = c; o.textContent = catDisp[c] || c; cat.appendChild(o);
     }
     for (const s of meta.sources) {
-        const o = document.createElement('option'); o.value = s; o.textContent = s; src.appendChild(o);
+        const o = document.createElement('option'); o.value = s; o.textContent = s || '（未標示來源）'; src.appendChild(o);
     }
+    const zhCountry = { hk:'香港', gb:'英國', us:'美國', cn:'中國', jp:'日本', kr:'南韓', sg:'新加坡', tw:'台灣', my:'馬來西亞', th:'泰國', vn:'越南', ph:'菲律賓', id:'印尼', au:'澳洲', ca:'加拿大', de:'德國', fr:'法國', es:'西班牙', it:'意大利', nz:'紐西蘭' };
     for (const c of meta.countries) {
-        const o = document.createElement('option'); o.value = c; o.textContent = c; cty.appendChild(o);
+        const o = document.createElement('option'); o.value = c; o.textContent = zhCountry[c] || c || '（未標示）'; cty.appendChild(o);
     }
+    const zhLang = { en:'英文', zh:'中文', ja:'日文', ko:'韓文', fr:'法文', de:'德文', es:'西文', it:'意大利文' };
     for (const l of (meta.languages || [])) {
-        const o = document.createElement('option'); o.value = l; o.textContent = l; lng.appendChild(o);
+        const o = document.createElement('option'); o.value = l; o.textContent = zhLang[l] || l || '（未標示）'; lng.appendChild(o);
     }
 }
 

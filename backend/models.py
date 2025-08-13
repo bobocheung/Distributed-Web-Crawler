@@ -23,6 +23,8 @@ class Article(Base):
 	source: Mapped[Optional[str]] = Column(String(128), nullable=True)
 	source_norm: Mapped[Optional[str]] = Column(String(128), nullable=True, index=True)
 	category: Mapped[Optional[str]] = Column(String(64), nullable=True)
+	# comma-separated normalized categories, wrapped with commas for LIKE filtering, e.g. ",technology,economy,"
+	categories: Mapped[Optional[str]] = Column(Text, nullable=True)
 	country: Mapped[Optional[str]] = Column(String(32), nullable=True, index=True)
 	published_at: Mapped[Optional[datetime]] = Column(DateTime, nullable=True, index=True)
 	lang: Mapped[Optional[str]] = Column(String(8), nullable=True, index=True)

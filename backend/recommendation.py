@@ -29,30 +29,27 @@ def _serialize_preferences(prefs: Dict[str, float]) -> str:
 	return "|".join(f"{k}:{v:.4f}" for k, v in prefs.items())
 
 
-# Expanded default taxonomy (20+ categories)
-DEFAULT_CATEGORIES = [
-    "general",
-    "world",
-    "business",
-    "technology",
-    "sports",
-    "entertainment",
-    "politics",
-    "economy",
-    "finance",
-    "markets",
-    "fashion",
-    "culture",
-    "lifestyle",
-    "health",
-    "science",
-    "travel",
-    "food",
-    "education",
-    "environment",
-    "opinion",
-    "local",
-]
+# 更明確的多標籤分類（英文字作內部 key，繁中顯示於前端）
+CATEGORY_DISPLAY = {
+    "technology": "科技",
+    "business": "商業",
+    "economy": "經濟",
+    "finance": "金融",
+    "science": "科學",
+    "health": "健康",
+    "sports": "體育",
+    "entertainment": "娛樂",
+    "world": "國際",
+    "local": "本地",
+    "politics": "政治",
+    "education": "教育",
+    "environment": "環境",
+    "culture": "文化",
+    "fashion": "時尚",
+    "technology_policy": "科技政策",
+    "markets": "市場",
+}
+DEFAULT_CATEGORIES = list(CATEGORY_DISPLAY.keys())
 
 # Countries to show in filters even before data exists (20)
 DEFAULT_COUNTRIES = [

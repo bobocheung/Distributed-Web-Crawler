@@ -54,3 +54,29 @@ def detect_lang(text: str) -> str:
 
 def simhash_text(text: str) -> int:
 	return Simhash(text.split()).value
+
+
+def infer_country_from_url(url: Optional[str]) -> Optional[str]:
+    if not url:
+        return None
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or '').lower()
+    except Exception:
+        return None
+    suffix_map = {
+        '.com.hk': 'hk', '.org.hk': 'hk', '.gov.hk': 'hk',
+        '.co.uk': 'gb', '.com.au': 'au', '.com.sg': 'sg', '.co.jp': 'jp',
+        '.com.tw': 'tw', '.com.cn': 'cn'
+    }
+    for suf, code in suffix_map.items():
+        if host.endswith(suf):
+            return code
+    tld_map = {
+        'hk':'hk','uk':'gb','us':'us','cn':'cn','jp':'jp','kr':'kr','sg':'sg','tw':'tw',
+        'my':'my','th':'th','vn':'vn','ph':'ph','id':'id','au':'au','ca':'ca','de':'de',
+        'fr':'fr','it':'it','es':'es','gb':'gb'
+    }
+    parts = host.rsplit('.', 1)
+    if len(parts) == 2:
+        return tld_map.get(parts[1])
+    return None

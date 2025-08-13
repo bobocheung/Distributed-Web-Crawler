@@ -1,6 +1,6 @@
 ## 個人化新聞聚合器 (Personalized News Aggregator)
 
-端到端新聞聚合：RSS 收集、內容抽取/去重/語言偵測、推薦與 UI。支援 Docker Compose 一鍵部署（web/worker/beat/redis/db）。
+端到端新聞聚合：RSS 收集、內容抽取/去重/語言偵測、推薦與 UI。支援 Docker Compose 一鍵部署（web/worker/beat/redis/db）。新增：多標籤分類（同一篇可同時「科技、經濟」），前端篩選與繁中顯示全面對應。
 
 ### 功能
 - Flask API + SQLAlchemy（PostgreSQL）+ Alembic 遷移
@@ -27,6 +27,19 @@ docker compose run --rm -e BACKEND_URL=http://web:5000 web bash -lc \
   "/app/.venv/bin/python -m crawler.fetch_feeds"
 ```
 之後 Celery Beat 會每 15 分鐘自動抓取。
+
+### 分類準則與多標籤
+- 主類別 `category`（單值）+ 多標籤 `categories`（逗號環繞字串，如 `,technology,economy,`）
+- 規則示例：
+  - 科技 technology：AI/人工智能、半導體/晶片、軟體/app 等
+  - 經濟 economy：通膨/CPI、GDP、經濟成長
+  - 金融 finance：銀行、利率、股市、證券（同時附加「經濟」）
+  - 政治 politics：政策、監管、立法、政府
+  - 健康 health：醫療、疫情、醫院
+  - 體育 sports：賽事、球隊、世界盃/奧運
+  - 娛樂 entertainment：電影、影視、音樂、明星
+  - 環境 environment：氣候、污染、減碳
+- `/meta` 會回傳 `category_display` 供前端顯示繁中名稱；`/articles` 的 `category` 過濾會同時匹配主類別與多標籤欄位。
 
 ### 常用指令
 ```bash
